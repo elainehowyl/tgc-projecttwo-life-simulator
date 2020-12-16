@@ -1,0 +1,36 @@
+DATABASE: life_simulator_game
+
+
+sample 'users' collection:
+
+{
+  "_id": {"$oid":"5fd9822e87f5c37a285ed1b1"}, 
+  "username":"admin",
+  "password":"admintestingpassword",
+  "email":"elaine_0110@hotmail.com",
+  "displayname":"Admin",
+  "gender":"female"
+}
+
+
+sample 'saveandload' collection:
+
+{
+  "_id":{"$oid":"5fd988ed87f5c37a285ed1b3"},
+  "username":"admin",
+  "stats":{
+     "health":{"$numberInt":"100"},
+     "happiness":{"$numberInt":"100"},
+     "money":{"$numberDecimal":"1056.50"}
+   }
+}
+
+sample 'tasks' collection:
+
+{
+  "_id":{"$oid":"5fd9a3a787f5c37a285ed1b5"},
+  "task_name":"eat",
+  "icon_source":""
+}
+
+

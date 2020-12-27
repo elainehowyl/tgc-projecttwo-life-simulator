@@ -11,21 +11,23 @@
             <b-button v-on:click="userLogin" variant="danger">Login</b-button>
           </b-form-group>
           <div>
-              <div v-b-modal.register-form class="modal-button-container">Register</div>
-              <div v-b-modal.how-to-play class="modal-button-container">How To Play</div>
+              <b-button v-b-modal.register-form class="modal-button-container">Register</b-button>
+              <b-button v-b-modal.how-to-play class="modal-button-container">How To Play</b-button>
           </div>
           <!-- <b-button v-b-modal.my-modal>Show Modal</b-button> -->
           <b-modal id="register-form">
+              <template #modal-header>
+                  <h3>Sign Up for An Account</h3>
+              </template>
             <div>
-              <h2>Sign up for an account</h2>
               <label> Username: </label>
-              <b-form-input type="text" v-model="registerUsername"/><br>
+              <b-form-input type="text" v-model="registerUsername"/>
               <label> Password: </label>
-              <b-form-input type="text" v-model="registerPassword"/><br>
+              <b-form-input type="text" v-model="registerPassword"/>
               <label> Email: </label>
-              <b-form-input type="email" v-model="registerEmail"/><br>
+              <b-form-input type="email" v-model="registerEmail"/>
               <label> Display Name: </label>
-              <b-form-input type="text" v-model="registerDisplayName"/><br>
+              <b-form-input type="text" v-model="registerDisplayName"/>
             </div>
             <div>
               <label>Gender: </label>
@@ -34,7 +36,10 @@
               <b-form-radio v-model="selectGender" value="female">Female</b-form-radio>
               <b-form-radio v-model="selectGender" value="male">Male</b-form-radio>
             </div>
-            <button @click="newRegister">Register</button>
+            <template #modal-footer="{cancel}">
+            <b-button @click="newRegister" variant="success">Register</b-button>
+            <b-button @click="cancel()" variant="primary">Cancel</b-button>
+            </template>
           </b-modal>
           <b-modal id="how-to-play">Hello From My Modal!</b-modal>
         </div>

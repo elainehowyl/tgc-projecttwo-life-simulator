@@ -1,45 +1,38 @@
 <template>
-    <div id="overall-container">
+    <div>
         <div>
-            <Login/>
+            <b-button v-b-modal.register-form class="modal-button-container">Register</b-button>
+            <b-button v-b-modal.how-to-play class="modal-button-container">How To Play</b-button>
+        </div>
+        <b-modal id="register-form">
+            <template #modal-header>
+                <h3>Sign Up for An Account</h3>
+            </template>
             <div>
-              <b-button v-b-modal.register-form class="modal-button-container">Register</b-button>
-              <b-button v-b-modal.how-to-play class="modal-button-container">How To Play</b-button>
-            </div>
-            <b-modal id="register-form">
-              <template #modal-header>
-                  <h3>Sign Up for An Account</h3>
-              </template>
-              <div>
-                <label> Username: </label>
-                <b-form-input type="text" v-model="registerUsername"/>
-                <label> Password: </label>
-                <b-form-input type="email" v-model="registerEmail"/>
-                <label> Display Name: </label>
-                <b-form-input type="text" v-model="registerDisplayName"/>
-              </div>
-              <div>
+              <label> Username: </label>
+              <b-form-input type="text" v-model="registerUsername"/>
+              <label> Password: </label>
+              <b-form-input type="email" v-model="registerEmail"/>
+              <label> Display Name: </label>
+              <b-form-input type="text" v-model="registerDisplayName"/>
+             </div>
+             <div>
                 <label>Gender: </label>
                 <b-form-radio v-model="selectGender" value="female">Female</b-form-radio>
                 <b-form-radio v-model="selectGender" value="male">Male</b-form-radio>
-              </div>
-              <template #modal-footer="{cancel}">
+             </div>
+             <template #modal-footer="{cancel}">
                 <b-button @click="newRegister" variant="success">Register</b-button>
                 <b-button @click="cancel()" variant="primary">Cancel</b-button>
-              </template>
-            </b-modal>
-            <b-modal id="how-to-play">Hello From My Modal!</b-modal>
-        </div>
+             </template>
+         </b-modal>
+         <b-modal id="how-to-play">Hello From My Modal!</b-modal>
     </div>
 </template>
 
 <script>
 import axios from 'axios'
-import Login from './Login'
 export default {
-    components:{
-        Login
-    },
     data:function(){
         return {
             usersForRegistration:[],
@@ -89,7 +82,7 @@ export default {
 <style scoped>
 .modal-button-container{
     width:100%;
-    background-color:orange;
+    background-color:black;
     text-align:center;
     border:solid;
 }

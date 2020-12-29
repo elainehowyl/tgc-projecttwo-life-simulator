@@ -14,18 +14,14 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 
-import Register from './components/Register'
-import Login from './components/Login'
-import GameDisplay from './components/GameDisplay'
-import NavBar from './components/NavBar'
+import Login from './components/sidebar/Login'
+import GameDisplay from './components/gamedisplay/GameDisplay'
+import NavBar from './components/sidebar/NavBar'
 
 
 Vue.config.productionTip = false
 
 const routes = [
-    {
-        path:'/register', component:Register
-    },
     {
         path:'/login', component:Login
     },

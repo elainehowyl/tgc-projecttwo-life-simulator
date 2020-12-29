@@ -1,32 +1,30 @@
 <template>
-    <div id="page-container">
-        <div id="login-container">
-         <div>
-           <b-form-group>
-             <label>Username: </label>
-             <b-form-input type="text" v-model="loginUsername"/>
-           </b-form-group>
-           <b-form-group>
-             <label>Password: </label>
-             <b-form-input type="text" v-model="loginPassword"/>
+    <div>
+        <div>
+           <h2>LOGO</h2>
+           <b-form-group id="formgroup">
+             <label>Username:</label>
+             <b-form-input type="text" label="Username" v-model="loginUsername"/>
+             <label>Password:</label>
+             <b-form-input type="text" label="Password" v-model="loginPassword"/>
              <p v-bind:style="{color:errorMsgColor}">{{passwordErrorMsg}}</p>
+             <b-button v-on:click="userLogin" variant="danger">Login</b-button>
            </b-form-group>
-           <b-button v-on:click="userLogin" variant="primary">Login</b-button>
-         </div>
         </div>
     </div>
 </template>
+
 <script>
 import axios from 'axios'
 export default {
     data:function(){
-        return{
+        return {
             users:[],
             loginUsername:'',
             loginPassword:'',
             usernameErrorMsg:'',
             passwordErrorMsg:'',
-            errorMsgColor:'red'
+            errorMsgColor:'red',
         }
     },
     methods:{
@@ -35,8 +33,8 @@ export default {
             this.users=response.data
             for(let user of this.users){
                 if(this.loginUsername != user.username){
-                    alert("Register an account now!")
                     this.passwordErrorMsg=""
+                    alert("Register an account now!")
                 }
                 else if(this.loginUsername == user.username && this.loginPassword != user.password){
                     this.passwordErrorMsg = "Incorrect Password"
@@ -49,18 +47,13 @@ export default {
                 break;
             }
             // this.passwordErrorMsg=""
-        }
+        },
     }
 }
 </script>
+
 <style scoped>
-#page-container{
-    display:flex;
-    justify-content:center;
-}
-#login-container{
-    width:40%;
-    height:30%;
-    border:solid;
+#formgroup{
+    padding:20px;
 }
 </style>

@@ -1,7 +1,6 @@
 <template>
     <div>
         <div>
-           <h2>LOGO</h2>
            <b-form-group id="formgroup">
              <label>Username:</label>
              <b-form-input type="text" label="Username" v-model="loginUsername"/>

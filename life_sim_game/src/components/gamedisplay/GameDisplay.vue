@@ -1,7 +1,7 @@
 <template>
     <div>
         <div id="display-container">
-            <MenuBar/>
+            <MenuBar id="menubar-size"/>
             <div id="stats-container"></div>
             <!-- <div id="game-container"></div> -->
         </div>
@@ -26,9 +26,9 @@ export default {
 #display-container{
     width:100%;
     height:100%;
-    border:solid black;
     background-color:blue;
     display:flex;
+    flex-direction:column;
     justify-content:center;
 }
 #stats-container{
@@ -38,14 +38,7 @@ export default {
     height:50%;
     margin:auto;
 }
-/* #stats-container{
+#menubar-size{
     width:100%;
-    height:50%;
-    background-color:orange;
 }
-#game-container{
-    width:100%;
-    height:50%;
-    background-color:red;
-} */
 </style>

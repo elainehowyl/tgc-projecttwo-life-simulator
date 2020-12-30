@@ -12,6 +12,8 @@
               <label> Username: </label>
               <b-form-input type="text" v-model="registerUsername"/>
               <label> Password: </label>
+              <b-form-input type="text" v-model="registerPassword"/>
+              <label> Email: </label>
               <b-form-input type="email" v-model="registerEmail"/>
               <label> Display Name: </label>
               <b-form-input type="text" v-model="registerDisplayName"/>

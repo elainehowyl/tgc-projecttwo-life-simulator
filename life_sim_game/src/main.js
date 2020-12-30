@@ -19,9 +19,13 @@ import GameDisplay from './components/gamedisplay/GameDisplay'
 import NavBar from './components/sidebar/NavBar'
 
 
+
 Vue.config.productionTip = false
 
 const routes = [
+    {
+        path:'/', component:GameDisplay
+    },
     {
         path:'/login', component:Login
     },

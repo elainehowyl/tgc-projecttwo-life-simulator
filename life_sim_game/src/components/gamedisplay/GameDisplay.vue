@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div id="game-display">
         <div id="display-container">
             <MenuBar id="menubar-size"/>
             <div id="stats-container"></div>
@@ -23,6 +23,10 @@ export default {
 </script>
 
 <style scoped>
+/* #game-display{
+    width:100vw;
+    height:100vh;
+} */
 #display-container{
     width:100%;
     height:100%;

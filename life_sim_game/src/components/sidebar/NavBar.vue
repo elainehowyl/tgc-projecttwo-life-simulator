@@ -1,6 +1,10 @@
 <template>
     <div>
         <div id="overall-container">
+            <div id="image-container">
+              <img src="Game_Logo.png" width=60%/>
+              <h6>Created my free logo at LogoMakr.com</h6>
+            </div>
             <Login/>
             <SideButtons/>
         </div>
@@ -14,6 +18,11 @@ export default {
     components:{
         Login, SideButtons
     },
+    data:function(){
+        return {
+            
+        }
+    },
 }
 </script>
 
@@ -23,5 +32,13 @@ export default {
     height:100%;
     background-color: #d29fe9;
     background-image: url("https://www.transparenttextures.com/patterns/food.png");
+}
+img{
+    padding:15px;
+    position:relative;
+    left:18%;
+}
+h6{
+    text-align:center;
 }
 </style>

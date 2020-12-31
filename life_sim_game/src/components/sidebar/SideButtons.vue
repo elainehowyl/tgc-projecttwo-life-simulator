@@ -66,9 +66,9 @@ export default {
                    displayname:this.registerDisplayName,
                    gender:this.selectGender,
                    stats:{
-                      health:0,
-                      happiness:0,
-                      money:parseFloat(parseFloat(0.00).toFixed(2))
+                      health:50,
+                      happiness:50,
+                      money:parseFloat(parseFloat(100.50).toFixed(2))
                    }
                  })
                  alert("Account successfully registered!")

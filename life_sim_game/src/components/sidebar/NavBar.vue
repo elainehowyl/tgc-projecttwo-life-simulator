@@ -5,8 +5,13 @@
               <img src="Game_Logo.png" width=60%/>
               <h6>Created my free logo at LogoMakr.com</h6>
             </div>
-            <Login/>
-            <SideButtons/>
+            <div v-if="this.$store.state.loggedIn===false">
+              <Login/>
+              <SideButtons/>
+            </div>
+            <div v-else>
+              <SideButtonsLoggedIn/>
+            </div>
         </div>
     </div>
 </template>
@@ -14,16 +19,20 @@
 <script>
 import Login from './Login'
 import SideButtons from './SideButtons'
+import SideButtonsLoggedIn from './SideButtonsLoggedIn'
 export default {
     components:{
-        Login, SideButtons
+        Login, SideButtons, SideButtonsLoggedIn
     },
     data:function(){
         return {
-            
+          
         }
     },
-}
+    methods:{
+        
+        }
+    }
 </script>
 
 <style scoped>

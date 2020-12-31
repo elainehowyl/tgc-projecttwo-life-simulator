@@ -1,3 +1,4 @@
+<!--REMEMBER TO CHANGE API LINK TO HEROKU'S INSTEAD OF EXPRESS-->
 <template>
   <div id="app">
     <div id="app-container">

@@ -1,10 +1,10 @@
 <template>
     <div>
-        <div id="menubar-container">
-            <b-button v-b-modal.settings size="sm" class="m-2">
-              <b-icon icon="gear-fill" aria-hidden="true"></b-icon>
-            </b-button>
-        </div>
+        <b-button v-b-modal.settings class="modal-button-container">
+            <b-icon icon="gear-fill" aria-hidden="true"></b-icon>
+            <span> Settings</span>
+        </b-button>
+        <div id="settings-container">
         <b-modal hide-footer id="settings">
             <template #modal-header>
                 <h3>Settings</h3>
@@ -26,14 +26,14 @@
                 <b-button size="sm" variant="danger">Confirm Delete</b-button>
             </div>
         </b-modal>
+        </div>
     </div>
 </template>
 
 <script>
 export default {
-    // props:['displayname'],
     data:function(){
-        return{
+        return {
             deletePassword:"",
             clickedDelete:false
         }
@@ -47,6 +47,12 @@ export default {
 </script>
 
 <style scoped>
+.modal-button-container{
+    width:100%;
+    background-color:black;
+    text-align:center;
+    border:solid;
+}
 #menubar-container{
     display:flex;
     justify-content:flex-end;

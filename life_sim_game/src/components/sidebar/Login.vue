@@ -5,7 +5,7 @@
              <label>Username:</label>
              <b-form-input type="text" label="Username" v-model="loginUsername"/>
              <label>Password:</label>
-             <b-form-input type="text" label="Password" v-model="loginPassword"/>
+             <b-form-input type="password" label="Password" v-model="loginPassword"/>
              <p v-bind:style="{color:errorMsgColor}">{{passwordErrorMsg}}</p>
              <b-button v-on:click="userLogin" variant="danger">Login</b-button>
            </b-form-group>
@@ -38,6 +38,8 @@ export default {
                 if(this.loginPassword === this.users[usernameIndex].password){
                     this.passwordErrorMsg = ""
                     alert("Login successfully!")
+                    this.$store.state.username = this.loginUsername
+                    this.$store.state.loggedIn = true;
                 } else{
                     this.passwordErrorMsg = "Incorrect Password"
                 }
@@ -45,30 +47,9 @@ export default {
                 this.passwordErrorMsg = ""
                 alert("Account not found! Would you like to register an account now?")
             }
+            // this.$emit('loginSuccessful')
         }
     }
-    // methods:{
-    //     userLogin:async function(){
-    //         let response = await axios.get('https://3001-b95582b4-ae68-4f74-ad61-58cb4afbe719.ws-us03.gitpod.io/users')
-    //         this.users=response.data
-    //         for(let user of this.users){
-    //             if(this.loginUsername != user.username){
-    //                 console.log(user.username)
-    //                 this.passwordErrorMsg=""
-    //                 alert("Register an account now!")
-    //             }
-    //             else if(this.loginUsername == user.username && this.loginPassword != user.password){
-    //                 this.passwordErrorMsg = "Incorrect Password"
-    //             }
-    //             else{
-    //                 alert("login successful!")
-    //                 this.passwordErrorMsg=""
-    //                 // this.$router.push('Users')
-    //             }
-    //             break;
-    //         }
-    //     },
-    // }
 }
 </script> 
 

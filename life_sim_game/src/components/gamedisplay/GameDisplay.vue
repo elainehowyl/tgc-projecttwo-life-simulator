@@ -1,7 +1,6 @@
 <template>
     <div id="game-display">
         <div id="display-container">
-            <MenuBar id="menubar-size"/>
             <div id="stats-container"></div>
             <!-- <div id="game-container"></div> -->
         </div>
@@ -9,10 +8,9 @@
 </template>
 
 <script>
-import MenuBar from './MenuBar'
 export default {
     components:{
-        MenuBar
+   
     },
     data:function(){
         return{

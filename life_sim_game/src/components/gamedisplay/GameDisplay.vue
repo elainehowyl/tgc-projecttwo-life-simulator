@@ -1,7 +1,8 @@
 <template>
     <div id="game-display">
         <div id="display-container">
-            <div id="stats-container"></div>
+            <div id="stats-container">
+            </div>
             <!-- <div id="game-container"></div> -->
         </div>
     </div>

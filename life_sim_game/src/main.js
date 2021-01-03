@@ -19,7 +19,12 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 const store = new Vuex.Store({
   state:{
      username:"",
-     loggedIn:false
+     loggedIn:false,
+     displayname:"",
+     gender:"",
+     health:0,
+     happiness:0,
+     money:0.00
   },
   plugins: [createPersistedState()],
 });

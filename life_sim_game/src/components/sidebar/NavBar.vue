@@ -2,7 +2,7 @@
     <div>
         <div id="overall-container">
             <div id="image-container">
-              <img src="Game_Logo.png" width=60%/>
+              <img src="/images/gameLogo.png" width=60%/>
               <h6>Created my free logo at LogoMakr.com</h6>
             </div>
             <div v-if="this.$store.state.loggedIn===false">
@@ -10,6 +10,7 @@
               <SideButtons/>
             </div>
             <div v-else>
+              <UserStats id="user-stats"/>
               <SideButtonsLoggedIn/>
             </div>
         </div>
@@ -19,10 +20,11 @@
 <script>
 import Login from './Login'
 import SideButtons from './SideButtons'
+import UserStats from './UserStats'
 import SideButtonsLoggedIn from './SideButtonsLoggedIn'
 export default {
     components:{
-        Login, SideButtons, SideButtonsLoggedIn
+        Login, SideButtons, UserStats, SideButtonsLoggedIn
     },
     data:function(){
         return {
@@ -41,6 +43,9 @@ export default {
     height:100%;
     background-color: #d29fe9;
     background-image: url("https://www.transparenttextures.com/patterns/food.png");
+}
+#user-stats{
+    padding:15px;
 }
 img{
     padding:15px;

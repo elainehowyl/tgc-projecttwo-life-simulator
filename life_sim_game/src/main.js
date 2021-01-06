@@ -24,7 +24,7 @@ const store = new Vuex.Store({
      gender:"",
      health:0,
      happiness:0,
-     money:0.00
+     money:0
   },
   plugins: [createPersistedState()],
 });

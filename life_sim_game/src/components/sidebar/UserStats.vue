@@ -24,7 +24,8 @@ export default {
         this.$store.state.displayname = this.savedGame.displayname
         this.$store.state.health = this.savedGame.stats.health
         this.$store.state.happiness = this.savedGame.stats.happiness
-        this.$store.state.money = this.savedGame.stats.money.$numberDecimal
+        this.$store.state.money = this.savedGame.stats.money
+        this.$store.state.gender = this.savedGame.stats.gender
     },
 }
 </script>

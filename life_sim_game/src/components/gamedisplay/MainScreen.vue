@@ -2,29 +2,74 @@
     <div>
         <div id="main-screen-container">
             <div id="taskbar-container">
-                <img v-b-modal.store src="images/storeicon.png" height=100% width="13%"/>
-                <img v-b-modal.inventory src="images/handphone_icon.png" height=100% width="17%"/>
+                <img src="images/storeicon.png" height=100% width="13%"/>
+                <img src="images/handphone_icon.png" height=100% width="17%" v-on:click="showTask"/>
             </div>
-            <b-modal id="store">
+            <!-- <b-modal id="store">
                 <h1>Hi</h1>
-            </b-modal>
+            </b-modal> -->
             <img src="/images/home_3.jpg" height=100% width=100%/>
-            <img src="/images/girl.png" height=55% width=25% id="character-sprite" v-on:click="testing"/>
+            <div v-if="this.$store.state.loggedIn===true">
+                <div v-if="this.$store.state.gender==='female'">
+                    <img src="/images/female.png" height=55% width=25% id="female-sprite" v-on:click="testing"/>
+                </div>
+                <div v-else-if="this.$store.state.gender==='male'">
+                    <img src="/images/male.png" height=65% width=25% id="male-sprite" v-on:click="testing"/>
+                </div>
+                <!-- <img src="/images/female.png" height=55% width=25% id="character-sprite" v-on:click="testing"/> -->
+            </div>
+            <!-- <img src="/images/female.png" height=55% width=25% id="character-sprite" v-on:click="testing"/> -->
+            <div id="show-task" v-if="showTaskState === true">
+                <img src="/images/handphone_popup.png" width=100% height="20%"/>
+                <table class="table table-sm" id="task-container">
+                    <tr v-for='(row, rindex) in tasksContainer' v-bind:key='rindex'>
+                        <td v-for='(col, cindex) in row' v-bind:key='cindex'>
+                            <img :src='tasksList[cindex*2+rindex].icon_source' width=75%/>
+                        </td>
+                    </tr>
+                </table>
+                <!-- <div v-for='(task,index) in tasksList' v-bind:key='index' id="task-container">
+                    <img :src='tasksList[0].icon_source' width=15%/>
+                    <img :src='tasksList[1].icon_source' width=15%/>
+                    <img :src='tasksList[2].icon_source' width=15%/>
+                    <img :src='tasksList[3].icon_source' width=15%/>
+                </div> -->
+            </div>
         </div>
     </div>
 </template>
 
 <script>
+import axios from 'axios'
 export default {
+    created: async function(){
+        let response = await axios.get('https://3002-b95582b4-ae68-4f74-ad61-58cb4afbe719.ws-us03.gitpod.io/tasks')
+        this.tasksList=response.data
+        // for(let task of this.tasksList){
+        //     console.log(task.icon_source)
+        // }
+    },
     data:function(){
         return{
-        
+          showTaskState:false,
+          tasksList:[],
+          tasksContainer:[
+              ['',''],
+              ['','']
+          ]
         }
     },
     methods:{
         testing:function(){
             console.log(typeof this.$store.state.money)
             this.$store.state.money += 1
+        },
+        showTask:function(){
+            if (this.showTaskState === false) {
+                this.showTaskState = true;
+            } else {
+                this.showTaskState = false;
+            }
         }
     },
 }
@@ -38,13 +83,18 @@ export default {
 /* #background-image{
     z-index:1
 } */
-#character-sprite{
+#female-sprite{
     position:absolute;
-    left:50%;
+    left:35%;
     top:38%;
     /* bottom:65%;
     left:15%; */
     /* z-index:2 */
+}
+#male-sprite{
+    position:absolute;
+    left:40%;
+    top:32%;
 }
 #taskbar-container{
     /* border:solid; */
@@ -52,5 +102,17 @@ export default {
     position:absolute;
     display:flex;
     justify-content:flex-end;
+}
+#show-task{
+    position:absolute;
+    top:30%;
+    left:50%;
+}
+#task-container{
+    /* border:solid; */
+    width:30%;
+    position:absolute;
+    top:30%;
+    left:36%;
 }
 </style>

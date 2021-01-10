@@ -47,35 +47,65 @@ export default {
     },
     methods:{
         newRegister:async function(){
-            let response = await axios.get('https://3001-b95582b4-ae68-4f74-ad61-58cb4afbe719.ws-us03.gitpod.io/users')
+            let response = await axios.get('https://3002-b95582b4-ae68-4f74-ad61-58cb4afbe719.ws-us03.gitpod.io/users')
             this.usersForRegistration=response.data
+            let usernameFound = false;
             for(let user of this.usersForRegistration){
                 if(this.registerUsername == user.username){
                     alert("Username has already been registered!")
-                } else {
-                    await axios.post('https://3001-b95582b4-ae68-4f74-ad61-58cb4afbe719.ws-us03.gitpod.io/users',{
+                    usernameFound = true;
+                    break;
+                }
+            }
+            if(usernameFound === false){
+                await axios.post('https://3002-b95582b4-ae68-4f74-ad61-58cb4afbe719.ws-us03.gitpod.io/users', {
                     username:this.registerUsername,
                     password:this.registerPassword,
                     email:this.registerEmail,
                     displayname:this.registerDisplayName,
                     gender:this.selectGender
-                    })
-
-                   await axios.post('https://3001-b95582b4-ae68-4f74-ad61-58cb4afbe719.ws-us03.gitpod.io/savedGames',{
-                   username:this.registerUsername,
-                   displayname:this.registerDisplayName,
-                   gender:this.selectGender,
-                   stats:{
-                      health:50,
-                      happiness:50,
-                      money:parseFloat(parseFloat(100.50).toFixed(2))
-                   }
-                 })
-                 alert("Account successfully registered!")
-                //  this.$router.push('Users')
-               }
-               break;
+                })
+                await axios.post('https://3002-b95582b4-ae68-4f74-ad61-58cb4afbe719.ws-us03.gitpod.io/savedGames', {
+                    username:this.registerUsername,
+                    displayname:this.registerDisplayName,
+                    gender:this.selectGender,
+                    stats:{
+                        health:50,
+                        happiness:50,
+                        money:100
+                    }
+                })
+                alert("Account registered successfully!")
             }
+            // for(let user of this.usersForRegistration){
+            //     if(this.registerUsername == user.username){
+            //         alert("Username has already been registered!")
+            //         usernameFound = true;
+            //         break;
+            //     } else {
+            //         await axios.post('https://3001-b95582b4-ae68-4f74-ad61-58cb4afbe719.ws-us03.gitpod.io/users',{
+            //         username:this.registerUsername,
+            //         password:this.registerPassword,
+            //         email:this.registerEmail,
+            //         displayname:this.registerDisplayName,
+            //         gender:this.selectGender
+            //         })
+
+            //        await axios.post('https://3001-b95582b4-ae68-4f74-ad61-58cb4afbe719.ws-us03.gitpod.io/savedGames',{
+            //        username:this.registerUsername,
+            //        displayname:this.registerDisplayName,
+            //        gender:this.selectGender,
+            //        stats:{
+            //           health:50,
+            //           happiness:50,
+            //           money:100
+            //        }
+            //      })
+            //      alert("Account successfully registered!")
+            //     //  this.$router.push('Users')
+            //    }
+            //    break;
+            // }
         }
     }
 }

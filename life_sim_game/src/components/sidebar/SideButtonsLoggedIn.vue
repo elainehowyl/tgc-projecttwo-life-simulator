@@ -13,7 +13,7 @@
                 <b-button class="m-1 center">Save</b-button>
             </div>
             <div>
-                <b-button class="m-1 center">Sign Out</b-button>
+                <b-button v-on:click="clickSignout" class="m-1 center">Sign Out</b-button>
             </div>
             <div>
                 <b-button v-on:click="clickDelete" class="m-1 center">Delete Account</b-button>
@@ -23,7 +23,7 @@
                   <label>Password</label>
                   <b-form-input type="text" v-model="deletePassword"/>
                 </b-form-group>
-                <b-button size="sm" variant="danger">Confirm Delete</b-button>
+                <b-button size="sm" variant="danger" v-on:click="confirmDelete">Confirm Delete</b-button>
             </div>
         </b-modal>
         </div>
@@ -31,16 +31,40 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
     data:function(){
         return {
             deletePassword:"",
-            clickedDelete:false
+            clickedDelete:false,
+            user:{},
+            savedGame:{}
         }
     },
     methods:{
+        clickSignout:function(){
+            this.$store.state.loggedIn = false;
+        },
         clickDelete:function(){
-            this.clickedDelete=true;
+            if(this.clickedDelete === false){
+                this.clickedDelete = true;
+            } else {
+                this.clickedDelete = false;
+            }
+        },
+        confirmDelete:async function(){
+            let userResponse = await axios.get('https://3002-b95582b4-ae68-4f74-ad61-58cb4afbe719.ws-us03.gitpod.io/users/' + this.$store.state.username)
+            this.user=userResponse.data
+            if(this.deletePassword === this.user.password){
+                // let savedGameResponse = await axios.get('https://3001-b95582b4-ae68-4f74-ad61-58cb4afbe719.ws-us03.gitpod.io/savedGames/' + this.$store.state.username)
+                // this.savedGame=savedGameResponse.data
+                await axios.delete('https://3002-b95582b4-ae68-4f74-ad61-58cb4afbe719.ws-us03.gitpod.io/users/' + this.$store.state.username)
+                await axios.delete('https://3002-b95582b4-ae68-4f74-ad61-58cb4afbe719.ws-us03.gitpod.io/savedGames/' + this.$store.state.username)
+                // await axios.delete('https://3001-b95582b4-ae68-4f74-ad61-58cb4afbe719.ws-us03.gitpod.io/users/' + this.$store.state.username)
+                alert("Account has been deleted successfully!")
+            } else {
+                alert("Incorrect password!")
+            }
         }
     }
 }

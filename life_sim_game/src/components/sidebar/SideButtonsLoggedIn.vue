@@ -10,7 +10,7 @@
                 <h3>Settings</h3>
             </template>
             <div>
-                <b-button class="m-1 center">Save</b-button>
+                <b-button v-on:click="clickSave" class="m-1 center">Save</b-button>
             </div>
             <div>
                 <b-button v-on:click="clickSignout" class="m-1 center">Sign Out</b-button>
@@ -42,6 +42,14 @@ export default {
         }
     },
     methods:{
+        clickSave:async function(){
+            await axios.patch('https://3002-b95582b4-ae68-4f74-ad61-58cb4afbe719.ws-us03.gitpod.io/savedGames/' + this.$store.state.username, {
+                health:this.$store.state.health,
+                happiness:this.$store.state.happiness,
+                money:this.$store.state.money
+            })
+            alert("Updated!")
+        },
         clickSignout:function(){
             this.$store.state.loggedIn = false;
         },

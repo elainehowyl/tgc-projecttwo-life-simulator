@@ -26,7 +26,11 @@ export default {
         this.$store.state.happiness = this.savedGame.stats.happiness
         this.$store.state.money = this.savedGame.stats.money
         this.$store.state.gender = this.savedGame.gender
-        console.log(this.$store.state.gender)
+        
+        setInterval(()=> {
+            this.$store.state.health-=1
+            this.$store.state.happiness-=1
+        },1000)
     },
 }
 </script>

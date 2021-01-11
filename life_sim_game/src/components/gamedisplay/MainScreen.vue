@@ -43,12 +43,22 @@
 <script>
 import axios from 'axios'
 export default {
+    // mounted:function(){
+    //     setInterval(function(){
+    //         this.$store.state.health++
+    //         this.$store.state.happiness++
+    //     },1000)
+    // },
     created: async function(){
         let response = await axios.get('https://3002-b95582b4-ae68-4f74-ad61-58cb4afbe719.ws-us03.gitpod.io/tasks')
         this.tasksList=response.data
         // for(let task of this.tasksList){
         //     console.log(task.icon_source)
         // }
+        // setInterval(function(){
+        //     this.$store.state.health++
+        //     this.$store.state.happiness++
+        // },1000)
     },
     data:function(){
         return{

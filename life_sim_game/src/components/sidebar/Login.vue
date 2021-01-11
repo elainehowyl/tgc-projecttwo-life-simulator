@@ -2,12 +2,12 @@
     <div>
         <div>
            <b-form-group id="formgroup">
-             <label>Username:</label>
-             <b-form-input type="text" label="Username" v-model="loginUsername"/>
-             <label>Password:</label>
-             <b-form-input type="password" label="Password" v-model="loginPassword"/>
+             <!-- <label>Username:</label> -->
+             <b-form-input type="text" label="Username" size="sm" placeholder="Enter Username" class="mb-2" v-model="loginUsername"/>
+             <!-- <label>Password:</label> -->
+             <b-form-input type="password" label="Password" size="sm" placeholder="Enter Password" v-model="loginPassword"/>
              <p v-bind:style="{color:errorMsgColor}">{{passwordErrorMsg}}</p>
-             <b-button v-on:click="userLogin" variant="danger">Login</b-button>
+             <b-button v-on:click="userLogin" variant="danger" size="sm">Login</b-button>
            </b-form-group>
         </div>
     </div>

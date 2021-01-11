@@ -1,8 +1,8 @@
 <template>
     <div>
         <div>
-            <b-button v-b-modal.register-form class="modal-button-container">Register</b-button>
-            <b-button v-b-modal.how-to-play class="modal-button-container">How To Play</b-button>
+            <b-button v-b-modal.register-form class="modal-button-container" size="sm">Register</b-button>
+            <b-button v-b-modal.how-to-play class="modal-button-container" size="sm">How To Play</b-button>
         </div>
         <b-modal id="register-form">
             <template #modal-header>
@@ -10,13 +10,13 @@
             </template>
             <div>
               <label> Username: </label>
-              <b-form-input type="text" v-model="registerUsername"/>
+              <b-form-input type="text" size="sm" v-model="registerUsername"/>
               <label> Password: </label>
-              <b-form-input type="text" v-model="registerPassword"/>
+              <b-form-input type="text" size="sm" v-model="registerPassword"/>
               <label> Email: </label>
-              <b-form-input type="email" v-model="registerEmail"/>
+              <b-form-input type="email" size="sm" v-model="registerEmail"/>
               <label> Display Name: </label>
-              <b-form-input type="text" v-model="registerDisplayName"/>
+              <b-form-input type="text" size="sm" v-model="registerDisplayName"/>
              </div>
              <div>
                 <label>Gender: </label>
@@ -24,8 +24,8 @@
                 <b-form-radio v-model="selectGender" value="male">Male</b-form-radio>
              </div>
              <template #modal-footer="{cancel}">
-                <b-button @click="newRegister" variant="success">Register</b-button>
-                <b-button @click="cancel()" variant="primary">Cancel</b-button>
+                <b-button @click="newRegister" size="sm" variant="success">Register</b-button>
+                <b-button @click="cancel()" size="sm" variant="primary">Cancel</b-button>
              </template>
          </b-modal>
          <b-modal id="how-to-play">Hello From My Modal!</b-modal>

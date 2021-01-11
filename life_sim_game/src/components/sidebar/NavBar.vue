@@ -1,9 +1,9 @@
 <template>
     <div>
         <div id="overall-container">
-            <div id="image-container">
+            <div id="image-container" class="d-flex justify-content-center p-2">
               <img src="/images/gameLogo.png" width=60%/>
-              <h6>Created my free logo at LogoMakr.com</h6>
+              <!-- <p>Created my free logo at LogoMakr.com</p> -->
             </div>
             <div v-if="this.$store.state.loggedIn===false">
               <Login/>
@@ -47,12 +47,11 @@ export default {
 #user-stats{
     padding:15px;
 }
-img{
+/* img{
     padding:15px;
-    position:relative;
-    left:18%;
-}
-h6{
+} */
+p{
     text-align:center;
+    font-size:16px;
 }
 </style>

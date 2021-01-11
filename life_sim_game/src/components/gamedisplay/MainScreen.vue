@@ -11,10 +11,10 @@
             <img src="/images/home_3.jpg" height=100% width=100%/>
             <div v-if="this.$store.state.loggedIn===true">
                 <div v-if="this.$store.state.gender==='female'">
-                    <img src="/images/female.png" height=55% width=25% id="female-sprite" v-on:click="testing"/>
+                    <img src="/images/female.png" height=55% width=25% id="female-sprite" v-on:click="increaseMoney"/>
                 </div>
                 <div v-else-if="this.$store.state.gender==='male'">
-                    <img src="/images/male.png" height=65% width=25% id="male-sprite" v-on:click="testing"/>
+                    <img src="/images/male.png" height=65% width=23% id="male-sprite" v-on:click="increaseMoney"/>
                 </div>
                 <!-- <img src="/images/female.png" height=55% width=25% id="character-sprite" v-on:click="testing"/> -->
             </div>
@@ -24,7 +24,8 @@
                 <table class="table table-sm" id="task-container">
                     <tr v-for='(row, rindex) in tasksContainer' v-bind:key='rindex'>
                         <td v-for='(col, cindex) in row' v-bind:key='cindex'>
-                            <img :src='tasksList[cindex*2+rindex].icon_source' width=75%/>
+                            <img :src='tasksList[cindex*2+rindex].icon_source' width=85% v-on:click="tasksButtons(cindex,rindex)"/>
+                            <!-- <img :src='tasksList[index].icon_source' width=75% v-on:click="taskButtons"/> -->
                         </td>
                     </tr>
                 </table>
@@ -56,13 +57,24 @@ export default {
           tasksContainer:[
               ['',''],
               ['','']
-          ]
+          ],
+        //   index:0
         }
     },
     methods:{
-        testing:function(){
+        increaseMoney:function(){
             console.log(typeof this.$store.state.money)
             this.$store.state.money += 1
+        },
+        tasksButtons:function(cindex,rindex){
+            for(let task of this.tasksList){
+                if(cindex*2+rindex === this.tasksList.indexOf(task)){
+                    this.$store.state.health+=task.health
+                    this.$store.state.happiness+=task.happiness
+                    this.$store.state.money+=task.money
+                }
+
+            }
         },
         showTask:function(){
             if (this.showTaskState === false) {

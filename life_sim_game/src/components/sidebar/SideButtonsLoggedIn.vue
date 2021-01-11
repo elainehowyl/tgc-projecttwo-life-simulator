@@ -64,12 +64,10 @@ export default {
             let userResponse = await axios.get('https://3002-b95582b4-ae68-4f74-ad61-58cb4afbe719.ws-us03.gitpod.io/users/' + this.$store.state.username)
             this.user=userResponse.data
             if(this.deletePassword === this.user.password){
-                // let savedGameResponse = await axios.get('https://3001-b95582b4-ae68-4f74-ad61-58cb4afbe719.ws-us03.gitpod.io/savedGames/' + this.$store.state.username)
-                // this.savedGame=savedGameResponse.data
                 await axios.delete('https://3002-b95582b4-ae68-4f74-ad61-58cb4afbe719.ws-us03.gitpod.io/users/' + this.$store.state.username)
                 await axios.delete('https://3002-b95582b4-ae68-4f74-ad61-58cb4afbe719.ws-us03.gitpod.io/savedGames/' + this.$store.state.username)
-                // await axios.delete('https://3001-b95582b4-ae68-4f74-ad61-58cb4afbe719.ws-us03.gitpod.io/users/' + this.$store.state.username)
                 alert("Account has been deleted successfully!")
+                 this.$store.state.loggedIn = false;
             } else {
                 alert("Incorrect password!")
             }

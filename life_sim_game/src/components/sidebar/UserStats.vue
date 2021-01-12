@@ -28,8 +28,14 @@ export default {
         this.$store.state.gender = this.savedGame.gender
         
         setInterval(()=> {
-            this.$store.state.health-=1
-            this.$store.state.happiness-=1
+            if(this.$store.state.health > 0){
+                this.$store.state.health-=1
+            }
+            if(this.$store.state.happiness > 0){
+                this.$store.state.happiness-=1
+            }
+            // this.$store.state.health-=1
+            // this.$store.state.happiness-=1
         },1000)
     },
 }

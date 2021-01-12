@@ -79,32 +79,62 @@ export default {
         tasksButtons:function(cindex,rindex){
             for(let task of this.tasksList){
                 if(cindex*2+rindex === this.tasksList.indexOf(task)){
-                    if(this.$store.state.health >= 0 && this.$store.state.health <= 100){
-                        if(this.$store.state.health + task.health > 100){
-                            this.$store.state.health = 100
-                        }
-                        else if(this.$store.state.health + task.health < 0){
-                            this.$store.state.health = 0
-                        }
-                        else{
-                            this.$store.state.health+=task.health
-                        }
+                    if(this.$store.state.health + task.health < 0 || this.$store.state.happiness + task.happiness < 0 || this.$store.state.money + task.money < 0){
+                        alert("You do not have enough health / happiness / money to do this activity!")
                     }
-                    if(this.$store.state.happiness >= 0 && this.$store.state.happiness <= 100){
-                        if(this.$store.state.happiness + task.happiness > 100){
-                            this.$store.state.happiness = 100
-                        }
-                        else if(this.$store.state.happiness + task.happiness < 0){
-                            this.$store.state.happiness = 0
-                        }
-                        else{
-                            this.$store.state.happiness+=task.happiness
-                        }
+                    else{
+                       if(this.$store.state.health + task.health > 100){
+                           this.$store.state.health = 100
+                       }
+                       else{
+                           this.$store.state.health += task.health
+                       }
+                       if(this.$store.state.happiness + task.happiness > 100){
+                           this.$store.state.happiness = 100
+                       }
+                       else{
+                           this.$store.state.happiness += task.happiness
+                       }
+                       this.$store.state.money += task.money
                     }
-                    this.$store.state.money+=task.money
+                    // if(this.$store.state.health + task.health > 100){
+                    //     this.$store.state.health = 100
+                    // }
+                    // if(this.$store.state.happiness + task.health > 100){
+                    //     this.$store.state.happiness = 100
+                    // }
                 }
             }
         },
+        // tasksButtons:function(cindex,rindex){
+        //     for(let task of this.tasksList){
+        //         if(cindex*2+rindex === this.tasksList.indexOf(task)){
+        //             if(this.$store.state.health >= 0 && this.$store.state.health <= 100){
+        //                 if(this.$store.state.health + task.health > 100){
+        //                     this.$store.state.health = 100
+        //                 }
+        //                 else if(this.$store.state.health + task.health < 0){
+        //                     alert("You do not have enough health for this activity!")
+        //                 }
+        //                 else{
+        //                     this.$store.state.health+=task.health
+        //                 }
+        //             }
+        //             if(this.$store.state.happiness >= 0 && this.$store.state.happiness <= 100){
+        //                 if(this.$store.state.happiness + task.happiness > 100){
+        //                     this.$store.state.happiness = 100
+        //                 }
+        //                 else if(this.$store.state.happiness + task.happiness < 0){
+        //                     alert("You do not have enough happiness for this activity!")
+        //                 }
+        //                 else{
+        //                     this.$store.state.happiness+=task.happiness
+        //                 }
+        //             }
+        //             this.$store.state.money+=task.money
+        //         }
+        //     }
+        // },
         // tasksButtons:function(cindex,rindex){
         //     for(let task of this.tasksList){
         //         if(cindex*2+rindex === this.tasksList.indexOf(task)){

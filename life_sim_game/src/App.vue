@@ -21,10 +21,13 @@ export default {
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&display=swap');
 #app{
     height:100vh;
     width:100vw;
     /* display:flex; */
+    font-family: 'East Sea Dokdo', cursive;
+    
 }
 #app-container{
     height:100%;

@@ -3,7 +3,7 @@
         <div>
            <b-form-group id="formgroup">
              <!-- <label>Username:</label> -->
-             <b-form-input type="text" label="Username" size="sm" placeholder="Enter Username" class="mb-2" v-model="loginUsername"/>
+             <b-form-input type="text" label="Username" size="sm" placeholder="Enter Username" autocomplete="off" class="mb-2" v-model="loginUsername"/>
              <!-- <label>Password:</label> -->
              <b-form-input type="password" label="Password" size="sm" placeholder="Enter Password" v-model="loginPassword"/>
              <p v-bind:style="{color:errorMsgColor}">{{passwordErrorMsg}}</p>

@@ -80,7 +80,17 @@ export default {
             for(let task of this.tasksList){
                 if(cindex*2+rindex === this.tasksList.indexOf(task)){
                     if(this.$store.state.health + task.health < 0 || this.$store.state.happiness + task.happiness < 0 || this.$store.state.money + task.money < 0){
-                        alert("You do not have enough health / happiness / money to do this activity!")
+                        if(this.$store.state.health + task.health < 0){
+                            alert("You do not have enough health to do this activity!")
+                            // alert("")
+                        }
+                        if(this.$store.state.happiness + task.happiness < 0){
+                            alert("You do not have enough happiness to do this activity!")
+                        }
+                        if(this.$store.state.money + task.money < 0){
+                            alert("You do not have enough money to do this activity!")
+                        }
+                        // alert("You do not have enough health / happiness / money to do this activity!")
                     }
                     else{
                        if(this.$store.state.health + task.health > 100){

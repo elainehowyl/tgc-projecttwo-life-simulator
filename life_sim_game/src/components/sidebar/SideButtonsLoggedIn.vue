@@ -44,9 +44,14 @@ export default {
     methods:{
         clickSave:async function(){
             await axios.patch('https://3002-b95582b4-ae68-4f74-ad61-58cb4afbe719.ws-us03.gitpod.io/savedGames/' + this.$store.state.username, {
-                health:this.$store.state.health,
-                happiness:this.$store.state.happiness,
-                money:this.$store.state.money
+                stats:{
+                    health:this.$store.state.health,
+                    happiness:this.$store.state.happiness,
+                    money:this.$store.state.money
+                }
+                // health:this.$store.state.health,
+                // happiness:this.$store.state.happiness,
+                // money:this.$store.state.money
             })
             alert("Updated!")
         },

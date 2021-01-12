@@ -1,9 +1,13 @@
 <template>
     <div>
-        <h2>Welcome back,</h2>
-        <h2>{{this.$store.state.displayname}}</h2>
-        <h4>Health: {{this.$store.state.health}}%</h4>
-        <h4>Happiness: {{this.$store.state.happiness}}%</h4>
+        <h4>Welcome back,</h4>
+        <h4>{{this.$store.state.displayname}}</h4>
+        <h6>Health:</h6>
+        <b-progress :value="this.$store.state.health" :max="max" show-progress animated variant="danger"></b-progress>
+        <h6>Happiness:</h6>
+        <b-progress :value="this.$store.state.happiness" :max="max" show-progress animated variant="warning"></b-progress>
+        <!-- <h4>Health: {{this.$store.state.health}}%</h4>
+        <h4>Happiness: {{this.$store.state.happiness}}%</h4> -->
         <h4>Money: ${{this.$store.state.money}}</h4>
     </div>
 </template>

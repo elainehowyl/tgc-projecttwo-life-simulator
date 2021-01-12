@@ -12,7 +12,7 @@
               <label> Username: </label>
               <b-form-input type="text" size="sm" v-model="registerUsername"/>
               <label> Password: </label>
-              <b-form-input type="text" size="sm" v-model="registerPassword"/>
+              <b-form-input type="password" size="sm" v-model="registerPassword"/>
               <label> Email: </label>
               <b-form-input type="email" size="sm" v-model="registerEmail"/>
               <label> Display Name: </label>

@@ -21,7 +21,6 @@ export default {
 </script>
 
 <style scoped>
-/* @import url('https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&display=swap'); */
 /* @import url('https://fonts.googleapis.com/css2?family=Hanalei+Fill&display=swap'); */
 /* @import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap'); */
 /* @import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap'); */
@@ -37,7 +36,6 @@ export default {
     height:100vh;
     width:100vw;
     /* display:flex; */
-    /* font-family: 'East Sea Dokdo', cursive; */
     /* font-family: 'Hanalei Fill', cursive; */
     /* font-family: 'Bangers', cursive; */
     /* font-family: 'Luckiest Guy', cursive; */

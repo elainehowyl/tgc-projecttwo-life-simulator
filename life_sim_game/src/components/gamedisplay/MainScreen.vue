@@ -160,13 +160,16 @@ export default {
         tasksButtons:function(cindex,rindex){
             for(let task of this.tasksList){
                 if(cindex*2+rindex === this.tasksList.indexOf(task)){
-                    if(this.$store.state.health + task.health < 0 || this.$store.state.happiness + task.happiness < 0 || this.$store.state.money + task.money < 0){
+                    if(this.$store.state.health + task.health < 0 || this.$store.state.happiness + task.happiness < 0 || this.$store.state.money + task.money < 0 || this.$store.state.energy + task.energy < 0){
                         if(this.$store.state.health + task.health < 0){
                             alert("You do not have enough health to do this activity!")
                             // alert("")
                         }
                         if(this.$store.state.happiness + task.happiness < 0){
                             alert("You do not have enough happiness to do this activity!")
+                        }
+                        if(this.$store.state.energy + task.energy < 0){
+                            alert("You do not have enough energy to do this activity!")
                         }
                         if(this.$store.state.money + task.money < 0){
                             alert("You do not have enough money to do this activity!")
@@ -185,6 +188,12 @@ export default {
                        }
                        else{
                            this.$store.state.happiness += task.happiness
+                       }
+                       if(this.$store.state.energy + task.energy > 100){
+                           this.$store.state.energy = 100
+                       }
+                       else{
+                           this.$store.state.energy += task.energy
                        }
                        this.$store.state.money += task.money
                     }

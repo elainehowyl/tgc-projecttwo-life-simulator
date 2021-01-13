@@ -6,8 +6,8 @@
         <b-progress :value="this.$store.state.health" :max="100" show-progress animated variant="danger"></b-progress>
         <h6>Happiness:</h6>
         <b-progress :value="this.$store.state.happiness" :max="100" show-progress animated variant="warning"></b-progress>
-        <!-- <h4>Health: {{this.$store.state.health}}%</h4>
-        <h4>Happiness: {{this.$store.state.happiness}}%</h4> -->
+        <h6>Energy:</h6>
+        <b-progress :value="this.$store.state.energy" :max="100" show-progress animated variant="success"></b-progress>
         <h4>Money: ${{this.$store.state.money}}</h4>
     </div>
 </template>
@@ -28,6 +28,7 @@ export default {
         this.$store.state.displayname = this.savedGame.displayname
         this.$store.state.health = this.savedGame.stats.health
         this.$store.state.happiness = this.savedGame.stats.happiness
+        this.$store.state.energy = this.savedGame.stats.energy
         this.$store.state.money = this.savedGame.stats.money
         this.$store.state.gender = this.savedGame.gender
         this.$store.state.userhouses = this.savedGame.ownedhouses
@@ -38,6 +39,9 @@ export default {
             }
             if(this.$store.state.happiness > 0){
                 this.$store.state.happiness-=1
+            }
+            if(this.$store.state.energy > 0){
+                this.$store.state.energy-=1
             }
             // this.$store.state.health-=1
             // this.$store.state.happiness-=1

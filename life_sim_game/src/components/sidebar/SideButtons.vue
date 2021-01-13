@@ -72,6 +72,7 @@ export default {
                     stats:{
                         health:50,
                         happiness:50,
+                        energy:50,
                         money:100
                     },
                     ownedhouses:[]

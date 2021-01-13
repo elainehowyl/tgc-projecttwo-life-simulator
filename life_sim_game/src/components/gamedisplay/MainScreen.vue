@@ -99,60 +99,52 @@ export default {
         //     }
         // },
         storeButtons:async function(cindex,rindex){
-            let response = await axios.get('https://3002-b95582b4-ae68-4f74-ad61-58cb4afbe719.ws-eu03.gitpod.io/savedGames/' + this.$store.state.username)
-            let user=response.data
-            let userOwnedHouse = null
-            let storeOwnedHouse = null
-            let allOwnedHouse = null
-            for(let house of this.housesList){
-                if(cindex*2+rindex===this.housesList.indexOf(house)){
-                    for(let ownedhouse of user.ownedhouses){
-                        if(!ownedhouse.includes(house.house_name)){
+            if(this.$store.state.loggedIn === true){
+              let response = await axios.get('https://3002-b95582b4-ae68-4f74-ad61-58cb4afbe719.ws-eu03.gitpod.io/savedGames/' + this.$store.state.username)
+              let user=response.data
+              let userOwnedHouse = null
+              let storeOwnedHouse = null
+              let allOwnedHouse = null
+              for(let house of this.housesList){
+                  if(cindex*2+rindex===this.housesList.indexOf(house)){
+                     for(let ownedhouse of user.ownedhouses){
+                         if(!ownedhouse.includes(house.house_name)){
                             userOwnedHouse = false
-                        }
-                        else{
+                         }
+                         else{
                             userOwnedHouse = true
-                        }
-                    }
-                    for(let storedhouse of this.$store.state.userhouses){
-                        if(!storedhouse.includes(house.house_name)){
+                         }
+                     }
+                     for(let storedhouse of this.$store.state.userhouses){
+                         if(!storedhouse.includes(house.house_name)){
                             storeOwnedHouse = false
-                        }
-                        else{
+                         }
+                         else{
                             storeOwnedHouse = true
-                        }
-                    }
-                    if(!userOwnedHouse && !storeOwnedHouse){
-                        allOwnedHouse = false;
-                    }
-                    else{
-                        allOwnedHouse = true;
-                    }
-                    // for(let ownedhouse of user.ownedhouses){
-                    //     for(let storedhouse of this.$store.state.userhouses){
-                    //         if(!ownedhouse.includes(house.house_name) && !storedhouse.includes(house.house_name)){
-                    //           userOwnedHouse = false
-                    //         }
-                    //         else{
-                    //           userOwnedHouse = true
-                    //         } 
-                    //     }
-                    // }
-                    if(allOwnedHouse){
-                        this.image_source=house.image_source
-                    }
-                    else{
-                        if(this.$store.state.money >= house.price){
+                         }
+                     }
+                     if(!userOwnedHouse && !storeOwnedHouse){
+                         allOwnedHouse = false;
+                     }
+                     else{
+                         allOwnedHouse = true;
+                     }
+                     if(allOwnedHouse){
+                         this.image_source=house.image_source
+                     }
+                     else{
+                         if(this.$store.state.money >= house.price){
                             this.$store.state.money-=house.price
                             this.$store.state.userhouses.push(house.house_name)
                             allOwnedHouse = true
-                        }
-                        else{
+                         }
+                         else{
                             alert("You do not have enough money for this house!")
-                        }
-                    }
-                }
-            }
+                         }
+                     }
+                 }
+             }
+          }
         },
         showStore:function(){
             if (this.showStoreState === false) {

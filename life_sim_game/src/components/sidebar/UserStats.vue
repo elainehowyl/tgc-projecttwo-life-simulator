@@ -23,7 +23,7 @@ export default {
     },
     created: async function(){
         // this.savedGameUser = this.$route.params.username
-        let response = await axios.get('https://3002-b95582b4-ae68-4f74-ad61-58cb4afbe719.ws-us03.gitpod.io/savedGames/' + this.$store.state.username)
+        let response = await axios.get('https://3002-b95582b4-ae68-4f74-ad61-58cb4afbe719.ws-eu03.gitpod.io/savedGames/' + this.$store.state.username)
         this.savedGame = response.data
         this.$store.state.displayname = this.savedGame.displayname
         this.$store.state.health = this.savedGame.stats.health

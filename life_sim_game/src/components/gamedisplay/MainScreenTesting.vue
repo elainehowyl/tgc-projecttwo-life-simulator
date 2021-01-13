@@ -2,7 +2,7 @@
     <div>
         <div id="main-screen-container">
             <div id="taskbar-container">
-                <img src="images/storeicon.png" height=100% width="13%" v-on:click="showStore"/>
+                <img src="images/storeicon.png" height=100% width="13%"/>
                 <img src="images/handphone_icon.png" height=100% width="17%" v-on:click="showTask"/>
             </div>
             <!-- <b-modal id="store">
@@ -10,7 +10,8 @@
             </b-modal> -->
             <!-- <img src="/images/home_3.jpg" height=100% width=100%/> -->
             <img :src="image_source" height=100% width=100%/>
-            <!-- <b-button v-on:click="changeImage">Change Image</b-button> -->
+            <b-button v-on:click="changeImage">Change Image</b-button>
+            <b-button v-on:click="changeImage">Change Image</b-button>
             <div v-if="this.$store.state.loggedIn===true">
                 <div v-if="this.$store.state.gender==='female'">
                     <img src="/images/female.png" height=55% width=25% id="female-sprite" v-on:click="increaseMoney"/>
@@ -31,15 +32,12 @@
                         </td>
                     </tr>
                 </table>
-            </div>
-            <div id="show-store" v-if="showStoreState === true">
-                <img src="/images/store_popup_draft.png" width=70% height="10%"/>
-                <table class="table table-sm table-danger table-bordered" id="store-container">
-                    <td v-for='(row, rindex) in storeContainer' v-bind:key='rindex'>
-                            <img :src='housesList[rindex].house_image_source' width=100% v-on:click="storeButtons(rindex)"/>
-                            <!-- <img :src='tasksList[index].icon_source' width=75% v-on:click="taskButtons"/> -->
-                    </td>
-                </table>
+                <!-- <div v-for='(task,index) in tasksList' v-bind:key='index' id="task-container">
+                    <img :src='tasksList[0].icon_source' width=15%/>
+                    <img :src='tasksList[1].icon_source' width=15%/>
+                    <img :src='tasksList[2].icon_source' width=15%/>
+                    <img :src='tasksList[3].icon_source' width=15%/>
+                </div> -->
             </div>
         </div>
     </div>
@@ -48,58 +46,31 @@
 <script>
 import axios from 'axios'
 export default {
-    // mounted:function(){
-    //     setInterval(function(){
-    //         this.$store.state.health++
-    //         this.$store.state.happiness++
-    //     },1000)
-    // },
     created: async function(){
-        let tasksResponse = await axios.get('https://3002-b95582b4-ae68-4f74-ad61-58cb4afbe719.ws-eu03.gitpod.io/tasks')
-        this.tasksList=tasksResponse.data
-        let housesResponse = await axios.get('https://3002-b95582b4-ae68-4f74-ad61-58cb4afbe719.ws-eu03.gitpod.io/houses')
-        this.housesList=housesResponse.data
-        // for(let task of this.tasksList){
-        //     console.log(task.icon_source)
-        // }
-        // setInterval(function(){
-        //     this.$store.state.health++
-        //     this.$store.state.happiness++
-        // },1000)
+        let response = await axios.get('https://3002-b95582b4-ae68-4f74-ad61-58cb4afbe719.ws-eu03.gitpod.io/tasks')
+        this.tasksList=response.data
     },
     data:function(){
         return{
           showTaskState:false,
-          showStoreState:false,
           tasksList:[],
-          housesList:[],
           tasksContainer:[
               ['',''],
               ['','']
           ],
-          storeContainer:[
-              '','','',''
-          ],
-          image_source:"/images/default_house.jpg",
-        //   clickImage:false,
+          image_source:"",
+          clickImage:false,
         }
     },
     methods:{
-        // changeImage:function(){
-        //     if(!this.clickImage){
-        //        this.image_source="/images/house_1.jpg"
-        //        this.clickImage = true
-        //     }
-        //     else if(this.clickImage){
-        //         this.image_source="/images/house_2.jpg"
-        //         this.clickImage = false
-        //     }
-        // },
-        showStore:function(){
-            if (this.showStoreState === false) {
-                this.showStoreState = true;
-            } else {
-                this.showStoreState = false;
+        changeImage:function(){
+            if(!this.clickImage){
+               this.image_source="/images/home_3.jpg"
+               this.clickImage = true
+            }
+            else if(this.clickImage){
+                this.image_source="/images/home_2.jpg"
+                this.clickImage = false
             }
         },
         increaseMoney:function(){
@@ -184,23 +155,11 @@ export default {
     top:30%;
     left:50%;
 }
-#show-store{
-    position:absolute;
-    top:18%;
-    left:65%;
-}
 #task-container{
     /* border:solid; */
     width:30%;
     position:absolute;
     top:30%;
     left:36%;
-}
-#store-container{
-    /* border:solid; */
-    width:80%;
-    position:absolute;
-    top:22%;
-    right:25%;
 }
 </style>

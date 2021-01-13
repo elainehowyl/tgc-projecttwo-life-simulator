@@ -27,7 +27,7 @@ export default {
     },
     methods:{
         userLogin:async function(){
-            let response = await axios.get('https://3002-b95582b4-ae68-4f74-ad61-58cb4afbe719.ws-us03.gitpod.io/users')
+            let response = await axios.get('https://3002-b95582b4-ae68-4f74-ad61-58cb4afbe719.ws-eu03.gitpod.io/users')
             this.users=response.data
             let usernameOnly = []
             for(let user of this.users){

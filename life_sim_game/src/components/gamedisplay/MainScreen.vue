@@ -158,7 +158,8 @@ export default {
             this.$store.state.money += 1
         },
         tasksButtons:function(cindex,rindex){
-            for(let task of this.tasksList){
+            if(this.$store.state.loggedIn === true){
+             for(let task of this.tasksList){
                 if(cindex*2+rindex === this.tasksList.indexOf(task)){
                     if(this.$store.state.health + task.health < 0 || this.$store.state.happiness + task.happiness < 0 || this.$store.state.money + task.money < 0 || this.$store.state.energy + task.energy < 0){
                         if(this.$store.state.health + task.health < 0){
@@ -199,6 +200,7 @@ export default {
                     }
                 }
             }
+          }
         },
         showTask:function(){
             if (this.showTaskState === false) {

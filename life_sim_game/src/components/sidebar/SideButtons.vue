@@ -73,7 +73,8 @@ export default {
                         health:50,
                         happiness:50,
                         money:100
-                    }
+                    },
+                    ownedhouses:[]
                 })
                 alert("Account registered successfully!")
             }

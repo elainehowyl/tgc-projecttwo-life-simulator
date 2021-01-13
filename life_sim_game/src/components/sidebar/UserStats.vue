@@ -30,6 +30,7 @@ export default {
         this.$store.state.happiness = this.savedGame.stats.happiness
         this.$store.state.money = this.savedGame.stats.money
         this.$store.state.gender = this.savedGame.gender
+        this.$store.state.userhouses = this.savedGame.ownedhouses
         
         setInterval(()=> {
             if(this.$store.state.health > 0){

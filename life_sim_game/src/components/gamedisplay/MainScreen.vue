@@ -33,12 +33,14 @@
                 </table>
             </div>
             <div id="show-store" v-if="showStoreState === true">
-                <img src="/images/store_popup_draft.png" width=70% height="10%"/>
-                <table class="table table-sm table-danger table-bordered" id="store-container">
-                    <td v-for='(row, rindex) in storeContainer' v-bind:key='rindex'>
-                            <img :src='housesList[rindex].house_image_source' width=100% v-on:click="storeButtons(rindex)"/>
+                <img src="/images/store_menu.png" width=100% height="10%"/>
+                <table class="table table-sm table-borderless" id="store-container">
+                    <tr v-for='(row, rindex) in storeContainer' v-bind:key='rindex'>
+                        <td v-for='(col, cindex) in row' v-bind:key='cindex'>
+                            <img :src='housesList[cindex*2+rindex].image_source' width=100% v-on:click="storeButtons(cindex,rindex)"/>
                             <!-- <img :src='tasksList[index].icon_source' width=75% v-on:click="taskButtons"/> -->
-                    </td>
+                        </td>    
+                    </tr>
                 </table>
             </div>
         </div>
@@ -78,7 +80,8 @@ export default {
               ['','']
           ],
           storeContainer:[
-              '','','',''
+              ['',''],
+              ['','']
           ],
           image_source:"/images/default_house.jpg",
         //   clickImage:false,
@@ -95,6 +98,62 @@ export default {
         //         this.clickImage = false
         //     }
         // },
+        storeButtons:async function(cindex,rindex){
+            let response = await axios.get('https://3002-b95582b4-ae68-4f74-ad61-58cb4afbe719.ws-eu03.gitpod.io/savedGames/' + this.$store.state.username)
+            let user=response.data
+            let userOwnedHouse = null
+            let storeOwnedHouse = null
+            let allOwnedHouse = null
+            for(let house of this.housesList){
+                if(cindex*2+rindex===this.housesList.indexOf(house)){
+                    for(let ownedhouse of user.ownedhouses){
+                        if(!ownedhouse.includes(house.house_name)){
+                            userOwnedHouse = false
+                        }
+                        else{
+                            userOwnedHouse = true
+                        }
+                    }
+                    for(let storedhouse of this.$store.state.userhouses){
+                        if(!storedhouse.includes(house.house_name)){
+                            storeOwnedHouse = false
+                        }
+                        else{
+                            storeOwnedHouse = true
+                        }
+                    }
+                    if(!userOwnedHouse && !storeOwnedHouse){
+                        allOwnedHouse = false;
+                    }
+                    else{
+                        allOwnedHouse = true;
+                    }
+                    // for(let ownedhouse of user.ownedhouses){
+                    //     for(let storedhouse of this.$store.state.userhouses){
+                    //         if(!ownedhouse.includes(house.house_name) && !storedhouse.includes(house.house_name)){
+                    //           userOwnedHouse = false
+                    //         }
+                    //         else{
+                    //           userOwnedHouse = true
+                    //         } 
+                    //     }
+                    // }
+                    if(allOwnedHouse){
+                        this.image_source=house.image_source
+                    }
+                    else{
+                        if(this.$store.state.money >= house.price){
+                            this.$store.state.money-=house.price
+                            this.$store.state.userhouses.push(house.house_name)
+                            allOwnedHouse = true
+                        }
+                        else{
+                            alert("You do not have enough money for this house!")
+                        }
+                    }
+                }
+            }
+        },
         showStore:function(){
             if (this.showStoreState === false) {
                 this.showStoreState = true;
@@ -198,9 +257,9 @@ export default {
 }
 #store-container{
     /* border:solid; */
-    width:80%;
+    width:67%;
     position:absolute;
-    top:22%;
-    right:25%;
+    top:28%;
+    right:17%;
 }
 </style>

@@ -36,7 +36,7 @@
                 </table>
             </div>
         </div>
-        <div>{{currentReward}}</div>
+        <!-- <div>{{currentReward}}</div> -->
     </div>
 </template>
 
@@ -63,12 +63,14 @@ export default {
             this.cloneRandomEvents[i] = t
         }
 
-        console.log(this.cloneRandomEvents)
+        // console.log(this.cloneRandomEvents)
         for(let event of this.cloneRandomEvents){
             this.events.enqueue(event)
         }
 
-        console.log(this.events)
+        // console.log(this.events)
+        // let example = this.events.dequeue()
+        // console.log(example.event_name)
         
         // for(let example of this.examples){
         //     this.rewards.enqueue(example)
@@ -96,10 +98,9 @@ export default {
           ],
           image_source:"/images/default_house.jpg",
           events:new Queue(),
-          examples:['apple','banana','orange','pear'],
-          currentReward:"",
           cloneRandomEvents:[],
-          characterClicks:0
+          characterClicks:0,
+          currentEvent:{}
         }
     },
     methods:{
@@ -172,6 +173,12 @@ export default {
         increaseMoney:function(){
             this.$store.state.money += 1
             this.characterClicks += 1
+            console.log("Number of clicks: ", this.characterClicks)
+            if(this.characterClicks%10 === 0){
+                this.currentEvent = this.events.dequeue()
+                console.log("Dequeued event: ", this.currentEvent.event_name)
+                console.log("Current in queue: ", this.events)
+            }
         },
         tasksButtons:function(cindex,rindex){
             if(this.$store.state.loggedIn === true){

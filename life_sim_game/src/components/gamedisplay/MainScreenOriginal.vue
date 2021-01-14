@@ -41,20 +41,12 @@
 
 <script>
 import axios from 'axios'
-import Queue from '../../data-structures/Queue'
 export default {
     created: async function(){
         let tasksResponse = await axios.get('https://3002-b95582b4-ae68-4f74-ad61-58cb4afbe719.ws-eu03.gitpod.io/tasks')
         this.tasksList=tasksResponse.data
-        
         let housesResponse = await axios.get('https://3002-b95582b4-ae68-4f74-ad61-58cb4afbe719.ws-eu03.gitpod.io/houses')
         this.housesList=housesResponse.data
-        
-        this.rewards = new Queue()
-        for(let example of this.examples){
-            this.rewards.enqueue(example)
-        }
-        console.log(this.rewards)
     },
     data:function(){
         return{
@@ -71,8 +63,6 @@ export default {
               ['','']
           ],
           image_source:"/images/default_house.jpg",
-          rewards:[],
-          examples:['apple','banana','orange']
         }
     },
     methods:{
@@ -250,10 +240,5 @@ export default {
     position:absolute;
     top:28%;
     right:17%;
-}
-.low-stat-message{
-    width:25%;
-    height:25%;
-    background-color:white;
 }
 </style>

@@ -100,43 +100,53 @@ export default {
         // },
         storeButtons:async function(cindex,rindex){
             if(this.$store.state.loggedIn === true){
-              let response = await axios.get('https://3002-b95582b4-ae68-4f74-ad61-58cb4afbe719.ws-eu03.gitpod.io/savedGames/' + this.$store.state.username)
-              let user=response.data
-              let userOwnedHouse = null
+            //   let response = await axios.get('https://3002-b95582b4-ae68-4f74-ad61-58cb4afbe719.ws-eu03.gitpod.io/savedGames/' + this.$store.state.username)
+            //   let user=response.data
+            //   let userOwnedHouse = null
               let storeOwnedHouse = null
-              let allOwnedHouse = null
+            //   let allOwnedHouse = null
               for(let house of this.housesList){
                   if(cindex*2+rindex===this.housesList.indexOf(house)){
-                     for(let ownedhouse of user.ownedhouses){
-                         if(!ownedhouse.includes(house.house_name)){
-                            userOwnedHouse = false
-                         }
-                         else{
-                            userOwnedHouse = true
-                         }
-                     }
-                     for(let storedhouse of this.$store.state.userhouses){
-                         if(!storedhouse.includes(house.house_name)){
-                            storeOwnedHouse = false
-                         }
-                         else{
-                            storeOwnedHouse = true
-                         }
-                     }
-                     if(!userOwnedHouse && !storeOwnedHouse){
-                         allOwnedHouse = false;
-                     }
-                     else{
-                         allOwnedHouse = true;
-                     }
-                     if(allOwnedHouse){
+                    //  for(let ownedhouse of user.ownedhouses){
+                    //      if(!ownedhouse.includes(house.house_name)){
+                    //         userOwnedHouse = false
+                    //      }
+                    //      else{
+                    //         userOwnedHouse = true
+                    //      }
+                    //  }
+                    if(!this.$store.state.userhouses.includes(house.house_name)){
+                        storeOwnedHouse = false;
+                    }
+                    else{
+                        storeOwnedHouse = true;
+                    }
+                    //  for(let storedhouse of this.$store.state.userhouses){
+                    //      if(!storedhouse.includes(house.house_name)){
+                    //         storeOwnedHouse = false
+                    //      }
+                    //      else{
+                    //         storeOwnedHouse = true
+                    //      }
+                    //  }
+                    //  if(!userOwnedHouse && !storeOwnedHouse){
+                    //      allOwnedHouse = false;
+                    //  }
+                    //  else{
+                    //      allOwnedHouse = true;
+                    //  }
+                    //  if(allOwnedHouse){
+                    //      this.image_source=house.image_source
+                    //  }
+                     if(storeOwnedHouse){
                          this.image_source=house.image_source
                      }
                      else{
                          if(this.$store.state.money >= house.price){
                             this.$store.state.money-=house.price
                             this.$store.state.userhouses.push(house.house_name)
-                            allOwnedHouse = true
+                            // allOwnedHouse = true
+                            // storeOwnedHouse = true;
                          }
                          else{
                             alert("You do not have enough money for this house!")
@@ -154,7 +164,6 @@ export default {
             }
         },
         increaseMoney:function(){
-            console.log(typeof this.$store.state.money)
             this.$store.state.money += 1
         },
         tasksButtons:function(cindex,rindex){

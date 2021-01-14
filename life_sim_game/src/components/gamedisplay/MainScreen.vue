@@ -176,16 +176,28 @@ export default {
             this.$store.state.clicks += 1
             console.log("Number of clicks: ", this.$store.state.clicks)
             if(this.$store.state.clicks%10 === 0){
-                this.currentEvent = this.events.dequeue()
-                alert(this.currentEvent.description)
-                console.log("Dequeued event: ", this.currentEvent.event_name)
-                console.log("Current in queue: ", this.events)
-                if(this.$store.state.money + this.currentEvent.money < 0){
-                    this.$store.state.money = 0;
+                if(this.events.length!==0){
+                    this.currentEvent = this.events.dequeue()
+                    alert(this.currentEvent.description)
+                    console.log("Dequeued event: ", this.currentEvent.event_name)
+                    console.log("Current in queue: ", this.events)
+                    if(this.$store.state.money + this.currentEvent.money < 0){
+                        this.$store.state.money = 0;
+                    }
+                    else{
+                        this.$store.state.money += this.currentEvent.money
+                    }
                 }
-                else{
-                    this.$store.state.money += this.currentEvent.money
-                }
+                // this.currentEvent = this.events.dequeue()
+                // alert(this.currentEvent.description)
+                // console.log("Dequeued event: ", this.currentEvent.event_name)
+                // console.log("Current in queue: ", this.events)
+                // if(this.$store.state.money + this.currentEvent.money < 0){
+                //     this.$store.state.money = 0;
+                // }
+                // else{
+                //     this.$store.state.money += this.currentEvent.money
+                // }
                 // this.eventPopped = true
             }
         },

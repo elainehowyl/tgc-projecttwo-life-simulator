@@ -30,6 +30,7 @@ export default {
         this.$store.state.happiness = this.savedGame.stats.happiness
         this.$store.state.energy = this.savedGame.stats.energy
         this.$store.state.money = this.savedGame.stats.money
+        this.$store.state.clicks = this.savedGame.stats.clicks
         this.$store.state.gender = this.savedGame.gender
         this.$store.state.userhouses = this.savedGame.ownedhouses
         

@@ -26,6 +26,7 @@ const store = new Vuex.Store({
      happiness:0,
      energy:0,
      money:0,
+     clicks:0,
      userhouses:[]
   },
   plugins: [createPersistedState()],

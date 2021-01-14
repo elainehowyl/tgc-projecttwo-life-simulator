@@ -36,7 +36,7 @@
                 </table>
             </div>
         </div>
-        <!-- <div>{{currentReward}}</div> -->
+        <!-- <div v-if="eventPopped===true">{{currentReward}}</div> -->
     </div>
 </template>
 
@@ -100,7 +100,8 @@ export default {
           events:new Queue(),
           cloneRandomEvents:[],
           characterClicks:0,
-          currentEvent:{}
+          currentEvent:{},
+          eventPopped:false
         }
     },
     methods:{
@@ -172,12 +173,20 @@ export default {
         },
         increaseMoney:function(){
             this.$store.state.money += 1
-            this.characterClicks += 1
-            console.log("Number of clicks: ", this.characterClicks)
-            if(this.characterClicks%10 === 0){
+            this.$store.state.clicks += 1
+            console.log("Number of clicks: ", this.$store.state.clicks)
+            if(this.$store.state.clicks%10 === 0){
                 this.currentEvent = this.events.dequeue()
+                alert(this.currentEvent.description)
                 console.log("Dequeued event: ", this.currentEvent.event_name)
                 console.log("Current in queue: ", this.events)
+                if(this.$store.state.money + this.currentEvent.money < 0){
+                    this.$store.state.money = 0;
+                }
+                else{
+                    this.$store.state.money += this.currentEvent.money
+                }
+                // this.eventPopped = true
             }
         },
         tasksButtons:function(cindex,rindex){

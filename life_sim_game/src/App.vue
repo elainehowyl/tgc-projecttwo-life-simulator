@@ -28,7 +28,7 @@ export default {
 /* @import url('https://fonts.googleapis.com/css2?family=Chewy&display=swap'); */
 /* @import url('https://fonts.googleapis.com/css2?family=Frijole&display=swap'); */
 /* @import url('https://fonts.googleapis.com/css2?family=Freckle+Face&display=swap'); */
-/* @import url('https://fonts.googleapis.com/css2?family=Piedra&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Piedra&display=swap');
 
 
 
@@ -43,7 +43,7 @@ export default {
     /* font-family: 'Chewy', cursive; */
     /* font-family: 'Frijole', cursive; */
     /* font-family: 'Freckle Face', cursive; */
-    /* font-family: 'Piedra', cursive; */
+    font-family: 'Piedra', cursive;
 }
 #app-container{
     height:100%;

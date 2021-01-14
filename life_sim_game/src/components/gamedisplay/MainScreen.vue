@@ -9,8 +9,16 @@
                 <h1>Hi</h1>
             </b-modal> -->
             <!-- <img src="/images/home_3.jpg" height=100% width=100%/> -->
-            <img :src="image_source" height=100% width=100%/>
+            <!-- <div v-if="this.$store.state.loggedIn===true">
+               <img :src="image_source" height=100% width=100%/> 
+            </div>
+            <div v-else>
+                <img src="images/default_house.jpg" height=100% width=100%/> 
+            </div> -->
+            <!-- <img :src="image_source" height=100% width=100%/> -->
             <!-- <b-button v-on:click="changeImage">Change Image</b-button> -->
+            <img v-if="this.$store.state.loggedIn===true" :src="image_source" height=100% width=100%/>
+            <img v-else src="/images/default_house.jpg" height=100% width=100%/>
             <div v-if="this.$store.state.loggedIn===true">
                 <div v-if="this.$store.state.gender==='female'">
                     <img src="/images/female.png" height=55% width=25% id="female-sprite" v-on:click="increaseMoney"/>
@@ -84,20 +92,9 @@ export default {
               ['','']
           ],
           image_source:"/images/default_house.jpg",
-        //   clickImage:false,
         }
     },
     methods:{
-        // changeImage:function(){
-        //     if(!this.clickImage){
-        //        this.image_source="/images/house_1.jpg"
-        //        this.clickImage = true
-        //     }
-        //     else if(this.clickImage){
-        //         this.image_source="/images/house_2.jpg"
-        //         this.clickImage = false
-        //     }
-        // },
         storeButtons:async function(cindex,rindex){
             if(this.$store.state.loggedIn === true){
             //   let response = await axios.get('https://3002-b95582b4-ae68-4f74-ad61-58cb4afbe719.ws-eu03.gitpod.io/savedGames/' + this.$store.state.username)

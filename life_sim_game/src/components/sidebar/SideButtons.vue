@@ -5,6 +5,7 @@
             <b-button v-b-modal.how-to-play class="modal-button-container" size="sm">How To Play</b-button>
         </div>
         <b-modal id="register-form">
+        <!-- <b-modal v-if="registered===false" id="register-form"> -->
             <template #modal-header>
                 <h3>Sign Up for An Account</h3>
             </template>
@@ -42,12 +43,13 @@ export default {
             registerPassword:'',
             registerEmail:'',
             registerDisplayName:'',
-            selectGender:''
+            selectGender:'',
+            // registered:false
         }
     },
     methods:{
         newRegister:async function(){
-            let response = await axios.get('https://3002-b95582b4-ae68-4f74-ad61-58cb4afbe719.ws-eu03.gitpod.io/users')
+            let response = await axios.get('https://3002-b95582b4-ae68-4f74-ad61-58cb4afbe719.ws-us03.gitpod.io/users')
             this.usersForRegistration=response.data
             let usernameFound = false;
             for(let user of this.usersForRegistration){
@@ -58,14 +60,14 @@ export default {
                 }
             }
             if(usernameFound === false){
-                await axios.post('https://3002-b95582b4-ae68-4f74-ad61-58cb4afbe719.ws-eu03.gitpod.io/users', {
+                await axios.post('https://3002-b95582b4-ae68-4f74-ad61-58cb4afbe719.ws-us03.gitpod.io/users', {
                     username:this.registerUsername,
                     password:this.registerPassword,
                     email:this.registerEmail,
                     displayname:this.registerDisplayName,
                     gender:this.selectGender
                 })
-                await axios.post('https://3002-b95582b4-ae68-4f74-ad61-58cb4afbe719.ws-eu03.gitpod.io/savedGames', {
+                await axios.post('https://3002-b95582b4-ae68-4f74-ad61-58cb4afbe719.ws-us03.gitpod.io/savedGames', {
                     username:this.registerUsername,
                     displayname:this.registerDisplayName,
                     gender:this.selectGender,
@@ -78,36 +80,8 @@ export default {
                     ownedhouses:[]
                 })
                 alert("Account registered successfully!")
+                // this.registered = true;
             }
-            // for(let user of this.usersForRegistration){
-            //     if(this.registerUsername == user.username){
-            //         alert("Username has already been registered!")
-            //         usernameFound = true;
-            //         break;
-            //     } else {
-            //         await axios.post('https://3001-b95582b4-ae68-4f74-ad61-58cb4afbe719.ws-us03.gitpod.io/users',{
-            //         username:this.registerUsername,
-            //         password:this.registerPassword,
-            //         email:this.registerEmail,
-            //         displayname:this.registerDisplayName,
-            //         gender:this.selectGender
-            //         })
-
-            //        await axios.post('https://3001-b95582b4-ae68-4f74-ad61-58cb4afbe719.ws-us03.gitpod.io/savedGames',{
-            //        username:this.registerUsername,
-            //        displayname:this.registerDisplayName,
-            //        gender:this.selectGender,
-            //        stats:{
-            //           health:50,
-            //           happiness:50,
-            //           money:100
-            //        }
-            //      })
-            //      alert("Account successfully registered!")
-            //     //  this.$router.push('Users')
-            //    }
-            //    break;
-            // }
         }
     }
 }

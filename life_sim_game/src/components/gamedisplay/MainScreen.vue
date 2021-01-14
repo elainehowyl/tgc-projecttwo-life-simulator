@@ -36,6 +36,7 @@
                 </table>
             </div>
         </div>
+        <div>{{currentReward}}</div>
     </div>
 </template>
 
@@ -44,17 +45,39 @@ import axios from 'axios'
 import Queue from '../../data-structures/Queue'
 export default {
     created: async function(){
-        let tasksResponse = await axios.get('https://3002-b95582b4-ae68-4f74-ad61-58cb4afbe719.ws-eu03.gitpod.io/tasks')
+        let tasksResponse = await axios.get('https://3002-b95582b4-ae68-4f74-ad61-58cb4afbe719.ws-us03.gitpod.io/tasks')
         this.tasksList=tasksResponse.data
         
-        let housesResponse = await axios.get('https://3002-b95582b4-ae68-4f74-ad61-58cb4afbe719.ws-eu03.gitpod.io/houses')
+        let housesResponse = await axios.get('https://3002-b95582b4-ae68-4f74-ad61-58cb4afbe719.ws-us03.gitpod.io/houses')
         this.housesList=housesResponse.data
-        
-        this.rewards = new Queue()
-        for(let example of this.examples){
-            this.rewards.enqueue(example)
+
+        let randomEventsResponse = await axios.get('https://3002-b95582b4-ae68-4f74-ad61-58cb4afbe719.ws-us03.gitpod.io/randomEvents')
+        this.randomEvents=randomEventsResponse.data
+
+        this.cloneRandomEvents=[...this.randomEvents]
+        let m = this.cloneRandomEvents.length, t, i
+        while(m){
+            i = Math.floor(Math.random()*m--);
+            t = this.cloneRandomEvents[m]
+            this.cloneRandomEvents[m] = this.cloneRandomEvents[i]
+            this.cloneRandomEvents[i] = t
         }
-        console.log(this.rewards)
+
+        console.log(this.cloneRandomEvents)
+        for(let event of this.cloneRandomEvents){
+            this.events.enqueue(event)
+        }
+
+        console.log(this.events)
+        
+        // for(let example of this.examples){
+        //     this.rewards.enqueue(example)
+        // }
+        // console.log(this.rewards)
+        // console.log(this.rewards.dequeue())
+        // console.log(this.rewards.dequeue())
+        // console.log(this.rewards.dequeue())
+        // console.log(this.rewards.dequeue())
     },
     data:function(){
         return{
@@ -62,6 +85,7 @@ export default {
           showStoreState:false,
           tasksList:[],
           housesList:[],
+          randomEvents:[],
           tasksContainer:[
               ['',''],
               ['','']
@@ -71,8 +95,11 @@ export default {
               ['','']
           ],
           image_source:"/images/default_house.jpg",
-          rewards:[],
-          examples:['apple','banana','orange']
+          events:new Queue(),
+          examples:['apple','banana','orange','pear'],
+          currentReward:"",
+          cloneRandomEvents:[],
+          characterClicks:0
         }
     },
     methods:{
@@ -123,11 +150,12 @@ export default {
                          if(this.$store.state.money >= house.price){
                             this.$store.state.money-=house.price
                             this.$store.state.userhouses.push(house.house_name)
+                            alert("Purchase successful!")
                             // allOwnedHouse = true
                             // storeOwnedHouse = true;
                          }
                          else{
-                            alert("You do not have enough money for this house!")
+                            alert("Don't be greedy! You do not have enough money for this house yet!")
                          }
                      }
                  }
@@ -143,6 +171,7 @@ export default {
         },
         increaseMoney:function(){
             this.$store.state.money += 1
+            this.characterClicks += 1
         },
         tasksButtons:function(cindex,rindex){
             if(this.$store.state.loggedIn === true){

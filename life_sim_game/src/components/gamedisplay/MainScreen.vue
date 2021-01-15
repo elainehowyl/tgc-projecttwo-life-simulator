@@ -6,18 +6,18 @@
                 <img src="images/handphone_icon.png" height=100% width="17%" v-on:click="showTask"/>
             </div>
             <img v-if="this.$store.state.loggedIn===true" :src="image_source" height=100% width=100%/>
-            <img v-else src="/images/default_house.jpg" height=100% width=100%/>
+            <img v-else src="images/default_house.jpg" height=100% width=100%/>
             <div v-if="this.$store.state.loggedIn===true">
                 <div v-if="this.$store.state.gender==='female'">
-                    <img src="/images/female.png" height=55% width=25% id="female-sprite" v-on:click="increaseMoney"/>
+                    <img src="images/female.png" height=55% width=25% id="female-sprite" v-on:click="increaseMoney"/>
                 </div>
                 <div v-else-if="this.$store.state.gender==='male'">
-                    <img src="/images/male.png" height=65% width=23% id="male-sprite" v-on:click="increaseMoney"/>
+                    <img src="images/male.png" height=65% width=23% id="male-sprite" v-on:click="increaseMoney"/>
                 </div>
             </div>
             <div id="show-task" v-if="showTaskState === true">
-                <img src="/images/handphone_popup.png" width=100% height="20%"/>
-                <table class="table table-sm table-borderless" id="task-container">
+                <img src="images/handphone_popup.png" width=100% height="20%"/>
+                <table class="table table-sm table-bordered" id="task-container">
                     <tr v-for='(row, rindex) in tasksContainer' v-bind:key='rindex'>
                         <td v-for='(col, cindex) in row' v-bind:key='cindex'>
                             <img :src='tasksList[cindex*2+rindex].icon_source' width=85% v-on:click="tasksButtons(cindex,rindex)"/>
@@ -26,7 +26,7 @@
                 </table>
             </div>
             <div id="show-store" v-if="showStoreState === true">
-                <img src="/images/store_menu.png" width=100% height="10%"/>
+                <img src="images/store_menu.png" width=100% height="10%"/>
                 <table class="table table-sm table-borderless" id="store-container">
                     <tr v-for='(row, rindex) in storeContainer' v-bind:key='rindex'>
                         <td v-for='(col, cindex) in row' v-bind:key='cindex'>
@@ -45,16 +45,17 @@ import axios from 'axios'
 import Queue from '../../data-structures/Queue'
 export default {
     created: async function(){
-        let tasksResponse = await axios.get('https://3002-b95582b4-ae68-4f74-ad61-58cb4afbe719.ws-us03.gitpod.io/tasks')
+        let tasksResponse = await axios.get('https://ehyl-life-sim-game-api.herokuapp.com/tasks')
         this.tasksList=tasksResponse.data
         
-        let housesResponse = await axios.get('https://3002-b95582b4-ae68-4f74-ad61-58cb4afbe719.ws-us03.gitpod.io/houses')
+        let housesResponse = await axios.get('https://ehyl-life-sim-game-api.herokuapp.com/houses')
         this.housesList=housesResponse.data
 
-        let randomEventsResponse = await axios.get('https://3002-b95582b4-ae68-4f74-ad61-58cb4afbe719.ws-us03.gitpod.io/randomEvents')
+        let randomEventsResponse = await axios.get('https://ehyl-life-sim-game-api.herokuapp.com/randomEvents')
         this.randomEvents=randomEventsResponse.data
 
         this.cloneRandomEvents=[...this.randomEvents]
+
         let m = this.cloneRandomEvents.length, t, i
         while(m){
             i = Math.floor(Math.random()*m--);
@@ -63,7 +64,8 @@ export default {
             this.cloneRandomEvents[i] = t
         }
 
-        // console.log(this.cloneRandomEvents)
+        console.log(this.cloneRandomEvents)
+
         for(let event of this.cloneRandomEvents){
             this.events.enqueue(event)
         }
@@ -96,12 +98,12 @@ export default {
               ['',''],
               ['','']
           ],
-          image_source:"/images/default_house.jpg",
+          image_source:"images/default_house.jpg",
           events:new Queue(),
           cloneRandomEvents:[],
           characterClicks:0,
           currentEvent:{},
-          eventPopped:false
+        //   eventPopped:false,
         }
     },
     methods:{
@@ -176,6 +178,7 @@ export default {
             this.$store.state.clicks += 1
             console.log("Number of clicks: ", this.$store.state.clicks)
             if(this.$store.state.clicks%10 === 0){
+                // let queueEmpty = false;
                 if(this.events.length!==0){
                     this.currentEvent = this.events.dequeue()
                     alert(this.currentEvent.description)
@@ -208,7 +211,6 @@ export default {
                     if(this.$store.state.health + task.health < 0 || this.$store.state.happiness + task.happiness < 0 || this.$store.state.money + task.money < 0 || this.$store.state.energy + task.energy < 0){
                         if(this.$store.state.health + task.health < 0){
                             alert("You do not have enough health to do this activity!")
-                            // alert("")
                         }
                         if(this.$store.state.happiness + task.happiness < 0){
                             alert("You do not have enough happiness to do this activity!")
@@ -257,6 +259,9 @@ export default {
 </script>
 
 <style scoped>
+span{
+    font-size:10px;
+}
 #main-screen-container{
     width:100%;
     height:100%
@@ -298,7 +303,7 @@ export default {
     /* border:solid; */
     width:30%;
     position:absolute;
-    top:30%;
+    top:25%;
     left:36%;
 }
 #store-container{

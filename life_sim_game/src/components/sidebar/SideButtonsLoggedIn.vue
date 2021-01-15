@@ -43,7 +43,7 @@ export default {
     },
     methods:{
         clickSave:async function(){
-            await axios.patch('https://3002-b95582b4-ae68-4f74-ad61-58cb4afbe719.ws-us03.gitpod.io/savedGames/' + this.$store.state.username, {
+            await axios.patch('https://ehyl-life-sim-game-api.herokuapp.com/savedGames/' + this.$store.state.username, {
                 stats:{
                     health:this.$store.state.health,
                     happiness:this.$store.state.happiness,
@@ -69,11 +69,11 @@ export default {
             }
         },
         confirmDelete:async function(){
-            let userResponse = await axios.get('https://3002-b95582b4-ae68-4f74-ad61-58cb4afbe719.ws-us03.gitpod.io/users/' + this.$store.state.username)
+            let userResponse = await axios.get('https://ehyl-life-sim-game-api.herokuapp.com/users/' + this.$store.state.username)
             this.user=userResponse.data
             if(this.deletePassword === this.user.password){
-                await axios.delete('https://3002-b95582b4-ae68-4f74-ad61-58cb4afbe719.ws-us03.gitpod.io/users/' + this.$store.state.username)
-                await axios.delete('https://3002-b95582b4-ae68-4f74-ad61-58cb4afbe719.ws-us03.gitpod.io/savedGames/' + this.$store.state.username)
+                await axios.delete('https://ehyl-life-sim-game-api.herokuapp.com/users/' + this.$store.state.username)
+                await axios.delete('https://ehyl-life-sim-game-api.herokuapp.com/savedGames/' + this.$store.state.username)
                 alert("Account has been deleted successfully!")
                  this.$store.state.loggedIn = false;
             } else {

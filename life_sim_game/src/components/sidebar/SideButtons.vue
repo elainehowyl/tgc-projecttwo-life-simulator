@@ -49,7 +49,7 @@ export default {
     },
     methods:{
         newRegister:async function(){
-            let response = await axios.get('https://3002-b95582b4-ae68-4f74-ad61-58cb4afbe719.ws-us03.gitpod.io/users')
+            let response = await axios.get('https://ehyl-life-sim-game-api.herokuapp.com/users')
             this.usersForRegistration=response.data
             let usernameFound = false;
             for(let user of this.usersForRegistration){
@@ -60,14 +60,14 @@ export default {
                 }
             }
             if(usernameFound === false){
-                await axios.post('https://3002-b95582b4-ae68-4f74-ad61-58cb4afbe719.ws-us03.gitpod.io/users', {
+                await axios.post('https://ehyl-life-sim-game-api.herokuapp.com/users', {
                     username:this.registerUsername,
                     password:this.registerPassword,
                     email:this.registerEmail,
                     displayname:this.registerDisplayName,
                     gender:this.selectGender
                 })
-                await axios.post('https://3002-b95582b4-ae68-4f74-ad61-58cb4afbe719.ws-us03.gitpod.io/savedGames', {
+                await axios.post('https://ehyl-life-sim-game-api.herokuapp.com/savedGames', {
                     username:this.registerUsername,
                     displayname:this.registerDisplayName,
                     gender:this.selectGender,

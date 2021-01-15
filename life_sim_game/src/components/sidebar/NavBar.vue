@@ -2,7 +2,7 @@
     <div>
         <div id="overall-container">
             <div id="image-container" class="d-flex justify-content-center p-3">
-              <img src="/images/gameLogo.png" width=60%/>
+              <img src="images/gameLogo.png" width=60%/>
               <!-- <p>Created my free logo at LogoMakr.com</p> -->
             </div>
             <div v-if="this.$store.state.loggedIn===false">

@@ -44,8 +44,6 @@ export default {
             if(this.$store.state.energy > 0){
                 this.$store.state.energy-=1
             }
-            // this.$store.state.health-=1
-            // this.$store.state.happiness-=1
         },1000)
     },
 }

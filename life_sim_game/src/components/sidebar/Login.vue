@@ -6,7 +6,7 @@
              <b-form-input type="text" label="Username" size="sm" placeholder="Enter Username" autocomplete="off" class="mb-2" v-model="loginUsername"/>
              <!-- <label>Password:</label> -->
              <b-form-input type="password" label="Password" size="sm" placeholder="Enter Password" v-model="loginPassword"/>
-             <p v-bind:style="{color:errorMsgColor}">{{passwordErrorMsg}}</p>
+             <p v-bind:style="{color:'red', fontSize:'15px'}">{{passwordErrorMsg}}</p>
              <b-button v-on:click="userLogin" variant="danger" size="sm">Login</b-button>
            </b-form-group>
         </div>
@@ -22,7 +22,6 @@ export default {
             loginUsername:'',
             loginPassword:'',
             passwordErrorMsg:'',
-            errorMsgColor:'red',
         }
     },
     methods:{

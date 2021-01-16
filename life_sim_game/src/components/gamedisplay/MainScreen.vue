@@ -17,7 +17,7 @@
             </div>
             <div id="show-task" v-if="showTaskState === true">
                 <img src="images/handphone_popup.png" width=100% height="20%"/>
-                <table class="table table-sm table-bordered" id="task-container">
+                <table class="table table-sm table-borderless" id="task-container">
                     <tr v-for='(row, rindex) in tasksContainer' v-bind:key='rindex'>
                         <td v-for='(col, cindex) in row' v-bind:key='cindex'>
                             <img :src='tasksList[cindex*2+rindex].icon_source' width=85% v-on:click="tasksButtons(cindex,rindex)"/>
@@ -27,10 +27,11 @@
             </div>
             <div id="show-store" v-if="showStoreState === true">
                 <img src="images/store_menu.png" width=100% height="10%"/>
-                <table class="table table-sm table-borderless" id="store-container">
+                <table class="table table-sm table-bordered" id="store-container">
                     <tr v-for='(row, rindex) in storeContainer' v-bind:key='rindex'>
                         <td v-for='(col, cindex) in row' v-bind:key='cindex'>
                             <img :src='housesList[cindex*2+rindex].image_source' width=100% v-on:click="storeButtons(cindex,rindex)"/>
+                            <!-- <p>{{housesList[cindex*2+rindex].price}}</p> -->
                         </td>    
                     </tr>
                 </table>
@@ -56,12 +57,12 @@ export default {
 
         this.cloneRandomEvents=[...this.randomEvents]
 
-        let m = this.cloneRandomEvents.length, t, i
+        let m = this.cloneRandomEvents.length, t, r
         while(m){
-            i = Math.floor(Math.random()*m--);
+            r = Math.floor(Math.random()*m--);
             t = this.cloneRandomEvents[m]
-            this.cloneRandomEvents[m] = this.cloneRandomEvents[i]
-            this.cloneRandomEvents[i] = t
+            this.cloneRandomEvents[m] = this.cloneRandomEvents[r]
+            this.cloneRandomEvents[r] = t
         }
 
         console.log(this.cloneRandomEvents)
@@ -159,7 +160,7 @@ export default {
                             // storeOwnedHouse = true;
                          }
                          else{
-                            alert("Don't be greedy! You do not have enough money for this house yet!")
+                            alert("You do not have enough money for this house yet!")
                          }
                      }
                  }
@@ -177,7 +178,7 @@ export default {
             this.$store.state.money += 1
             this.$store.state.clicks += 1
             console.log("Number of clicks: ", this.$store.state.clicks)
-            if(this.$store.state.clicks%10 === 0){
+            if(this.$store.state.clicks%100 === 0){
                 // let queueEmpty = false;
                 if(this.events.length!==0){
                     this.currentEvent = this.events.dequeue()
@@ -213,7 +214,7 @@ export default {
                             alert("You do not have enough health to do this activity!")
                         }
                         if(this.$store.state.happiness + task.happiness < 0){
-                            alert("You do not have enough happiness to do this activity!")
+                            alert("You're not feeling happy right now to do anything...")
                         }
                         if(this.$store.state.energy + task.energy < 0){
                             alert("You're tired! Eat something to gain some energy!")
@@ -260,6 +261,9 @@ export default {
 
 <style scoped>
 span{
+    font-size:10px;
+}
+p{
     font-size:10px;
 }
 #main-screen-container{

@@ -1,9 +1,6 @@
 <template>
     <div>
-        <b-button v-b-modal.settings class="modal-button-container">
-            <b-icon icon="gear-fill" aria-hidden="true"></b-icon>
-            <span> Settings</span>
-        </b-button>
+        <b-button v-b-modal.settings class="modal-button-container">Settings</b-button>
         <div id="settings-container">
         <b-modal hide-footer id="settings">
             <template #modal-header>
@@ -101,5 +98,18 @@ export default {
 }
 .center{
     width:100%;
+}
+@media only screen 
+  and (min-width: 414px) 
+  and (max-width: 813px) {
+      h4{
+          font-size:15px;
+      }
+      h6{
+          font-size:12px;
+      }
+      .modal-button-container{
+          font-size:5px;
+      }
 }
 </style>

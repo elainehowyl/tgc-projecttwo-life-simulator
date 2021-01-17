@@ -1,13 +1,12 @@
 <template>
     <div>
         <h4>Welcome back, {{this.$store.state.displayname}}</h4>
-        <!-- <h4>{{this.$store.state.displayname}}</h4> -->
         <h6>Health:</h6>
-        <b-progress :value="this.$store.state.health" :max="100" show-progress animated variant="danger"></b-progress>
+        <b-progress :value="this.$store.state.health" :max="100" show-progress animated variant="danger" class="progress-bar-size"></b-progress>
         <h6>Happiness:</h6>
-        <b-progress :value="this.$store.state.happiness" :max="100" show-progress animated variant="warning"></b-progress>
+        <b-progress :value="this.$store.state.happiness" :max="100" show-progress animated variant="warning" class="progress-bar-size"></b-progress>
         <h6>Energy:</h6>
-        <b-progress :value="this.$store.state.energy" :max="100" show-progress animated variant="success"></b-progress>
+        <b-progress :value="this.$store.state.energy" :max="100" show-progress animated variant="success" class="progress-bar-size"></b-progress>
         <h6>Money: ${{this.$store.state.money}}</h6>
     </div>
 </template>
@@ -50,5 +49,18 @@ export default {
 </script>
 
 <style scoped>
-
+@media only screen 
+  and (min-width: 414px) 
+  and (max-width: 813px) {
+      h4{
+          font-size:15px;
+      }
+      h6{
+          font-size:12px;
+      }
+      .progress-bar-size{
+          height:10px;
+          font-size:5px;
+      }
+}
 </style>

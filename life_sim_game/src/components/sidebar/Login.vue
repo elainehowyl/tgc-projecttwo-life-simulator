@@ -63,4 +63,14 @@ export default {
           font-size:5px;
       }
 }
+@media only screen 
+  and (min-width: 414px) 
+  and (max-width: 813px) {
+      #button-font-size{
+          font-size:5px;
+      }
+      .input-size{
+          font-size:5px;
+      }
+}
 </style>

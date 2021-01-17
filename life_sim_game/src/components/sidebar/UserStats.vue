@@ -16,12 +16,10 @@ import axios from 'axios'
 export default {
     data:function(){
         return{
-            // savedGameUser:"",
             savedGame:{}
         }
     },
     created: async function(){
-        // this.savedGameUser = this.$route.params.username
         let response = await axios.get('https://ehyl-life-sim-game-api.herokuapp.com/savedGames/' + this.$store.state.username)
         this.savedGame = response.data
         this.$store.state.displayname = this.savedGame.displayname

@@ -3,7 +3,6 @@
         <div id="overall-container">
             <div id="image-container" class="d-flex justify-content-center p-3">
               <img src="images/gameLogo.png" width=60%/>
-              <!-- <p>Created my free logo at LogoMakr.com</p> -->
             </div>
             <div v-if="this.$store.state.loggedIn===false">
               <Login id="login-size"/>
@@ -47,18 +46,8 @@ export default {
 #user-stats{
     padding:15px;
 }
-/* img{
-    padding:15px;
-} */
 p{
     text-align:center;
     font-size:16px;
 }
-/* @media only screen
-and (min-width:667px)
-and (max-width:812px){
-  #login-size{
-      height:15%;
-  }
-} */
 </style>

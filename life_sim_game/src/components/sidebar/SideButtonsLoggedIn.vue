@@ -51,9 +51,6 @@ export default {
                     stats:0
                 },
                 ownedhouses:this.$store.state.userhouses
-                // health:this.$store.state.health,
-                // happiness:this.$store.state.happiness,
-                // money:this.$store.state.money
             })
             alert("Updated!")
         },
@@ -77,7 +74,6 @@ export default {
                  this.$store.state.loggedIn = false;
             } else {
                 this.wrongPassword = true
-                // alert("Incorrect password!")
             }
         }
     }

@@ -36,7 +36,6 @@
                 </table>
             </div>
         </div>
-        <!-- <div v-if="eventPopped===true">{{currentReward}}</div> -->
     </div>
 </template>
 
@@ -64,24 +63,9 @@ export default {
             this.cloneRandomEvents[r] = t
         }
 
-        console.log(this.cloneRandomEvents)
-
         for(let event of this.cloneRandomEvents){
             this.events.enqueue(event)
         }
-
-        // console.log(this.events)
-        // let example = this.events.dequeue()
-        // console.log(example.event_name)
-        
-        // for(let example of this.examples){
-        //     this.rewards.enqueue(example)
-        // }
-        // console.log(this.rewards)
-        // console.log(this.rewards.dequeue())
-        // console.log(this.rewards.dequeue())
-        // console.log(this.rewards.dequeue())
-        // console.log(this.rewards.dequeue())
     },
     data:function(){
         return{
@@ -103,65 +87,33 @@ export default {
           cloneRandomEvents:[],
           characterClicks:0,
           currentEvent:{},
-        //   eventPopped:false,
         }
     },
     methods:{
         storeButtons:async function(cindex,rindex){
             if(this.$store.state.loggedIn === true){
-            //   let response = await axios.get('https://3002-b95582b4-ae68-4f74-ad61-58cb4afbe719.ws-eu03.gitpod.io/savedGames/' + this.$store.state.username)
-            //   let user=response.data
-            //   let userOwnedHouse = null
               let storeOwnedHouse = null
-            //   let allOwnedHouse = null
               for(let house of this.housesList){
                   if(cindex*2+rindex===this.housesList.indexOf(house)){
-                    //  for(let ownedhouse of user.ownedhouses){
-                    //      if(!ownedhouse.includes(house.house_name)){
-                    //         userOwnedHouse = false
-                    //      }
-                    //      else{
-                    //         userOwnedHouse = true
-                    //      }
-                    //  }
                     if(!this.$store.state.userhouses.includes(house.house_name)){
                         storeOwnedHouse = false;
                     }
                     else{
                         storeOwnedHouse = true;
                     }
-                    //  for(let storedhouse of this.$store.state.userhouses){
-                    //      if(!storedhouse.includes(house.house_name)){
-                    //         storeOwnedHouse = false
-                    //      }
-                    //      else{
-                    //         storeOwnedHouse = true
-                    //      }
-                    //  }
-                    //  if(!userOwnedHouse && !storeOwnedHouse){
-                    //      allOwnedHouse = false;
-                    //  }
-                    //  else{
-                    //      allOwnedHouse = true;
-                    //  }
-                    //  if(allOwnedHouse){
-                    //      this.image_source=house.image_source
-                    //  }
-                     if(storeOwnedHouse){
-                         this.image_source=house.image_source
-                     }
-                     else{
-                         if(this.$store.state.money >= house.price){
-                            this.$store.state.money-=house.price
-                            this.$store.state.userhouses.push(house.house_name)
-                            alert("Purchase successful!")
-                            // allOwnedHouse = true
-                            // storeOwnedHouse = true;
-                         }
-                         else{
-                            alert("You do not have enough money for this house yet!")
-                         }
-                     }
+                    if(storeOwnedHouse){
+                        this.image_source=house.image_source
+                    }
+                    else{
+                        if(this.$store.state.money >= house.price){
+                          this.$store.state.money-=house.price
+                          this.$store.state.userhouses.push(house.house_name)
+                          alert("Purchase successful!")
+                        }
+                        else{
+                          alert("You do not have enough money for this house yet!")
+                        }
+                    }
                  }
              }
           }
@@ -178,7 +130,6 @@ export default {
             this.$store.state.clicks += 1
             console.log("Number of clicks: ", this.$store.state.clicks)
             if(this.$store.state.clicks%150 === 0){
-                // let queueEmpty = false;
                 if(this.events.length!==0){
                     this.currentEvent = this.events.dequeue()
                     alert(this.currentEvent.description)
@@ -191,17 +142,6 @@ export default {
                         this.$store.state.money += this.currentEvent.money
                     }
                 }
-                // this.currentEvent = this.events.dequeue()
-                // alert(this.currentEvent.description)
-                // console.log("Dequeued event: ", this.currentEvent.event_name)
-                // console.log("Current in queue: ", this.events)
-                // if(this.$store.state.money + this.currentEvent.money < 0){
-                //     this.$store.state.money = 0;
-                // }
-                // else{
-                //     this.$store.state.money += this.currentEvent.money
-                // }
-                // this.eventPopped = true
             }
         },
         tasksButtons:function(cindex,rindex){
@@ -269,16 +209,10 @@ p{
     width:100%;
     height:100%
 }
-/* #background-image{
-    z-index:1
-} */
 #female-sprite{
     position:absolute;
     left:35%;
     top:38%;
-    /* bottom:65%;
-    left:15%; */
-    /* z-index:2 */
 }
 #male-sprite{
     position:absolute;
@@ -286,7 +220,6 @@ p{
     top:32%;
 }
 #taskbar-container{
-    /* border:solid; */
     height:20%;
     position:absolute;
     display:flex;
@@ -303,14 +236,12 @@ p{
     left:65%;
 }
 #task-container{
-    /* border:solid; */
     width:30%;
     position:absolute;
     top:25%;
     left:36%;
 }
 #store-container{
-    /* border:solid; */
     width:65%;
     position:absolute;
     top:28%;

@@ -108,7 +108,6 @@ export default {
             for(let user of this.usersForRegistration){
                 if(this.registerUsername == user.username){
                     this.registeredUsername = true
-                    // alert("Username has already been registered!")
                     usernameFound = true;
                     break;
                 }

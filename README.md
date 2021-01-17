@@ -91,6 +91,29 @@ A set of user's stats will be displayed in the side bar so that user can see the
 
 ## Testing
 
+The features are not perfect but below are some instructions and outputs provided to test the currently available features:
+
+### Registering An Account
+
+1. Case One: Username Taken
+If the username is taken, there will be an error message as such:
+![UsernameTaken](./life_sim_game/public/images/register-username-taken.png)
+
+2. Case Two: Invalid Inputs
+If the input fields do not meet the requirement, there will be error messages as such:
+(Note: In this case, one player is allowed to have different accounts under the same email. Thus, reistering an existing email would not be flagged as errors.)
+![InvalidInputs](./life_sim_game/public/images/register-invalid.png)
+
+### Logging In
+
+1. Case One: Account not found
+If a username has not been registered before, to put it simply, the account has not been created before, an alert will show up and prompt the user to register for an account:
+![AccountNotFound](./life_sim_game/public/images/login-account-notfound.png)
+
+2. Case Two: Incorrect password
+If a username has been registered but the password doesn't match, an error message will show:
+![IncorrectPassword](./life_sim_game/public/images/login-incorrect-password.png)
+
 ## Deployment
 
 The project is divided into two parts: API and Frontend.

@@ -2,10 +2,10 @@
     <div>
         <div>
            <b-form-group id="formgroup">
-             <b-form-input type="text" label="Username" size="sm" placeholder="Enter Username" autocomplete="off" class="mb-2" v-model="loginUsername"/>
-             <b-form-input type="password" label="Password" size="sm" placeholder="Enter Password" v-model="loginPassword"/>
+             <b-form-input type="text" label="Username" size="sm" placeholder="Enter Username" autocomplete="off" class="mb-2 input-size" v-model="loginUsername"/>
+             <b-form-input type="password" label="Password" size="sm" placeholder="Enter Password" class="input-size" v-model="loginPassword"/>
              <p v-bind:style="{color:'red', fontSize:'15px'}">{{passwordErrorMsg}}</p>
-             <b-button v-on:click="userLogin" variant="danger" size="sm">Login</b-button>
+             <b-button v-on:click="userLogin" variant="danger" size="sm" id="button-font-size">Login</b-button>
            </b-form-group>
         </div>
     </div>
@@ -52,5 +52,15 @@ export default {
 <style scoped>
 #formgroup{
     padding:20px;
+}
+@media only screen 
+  and (min-width: 414px) 
+  and (max-width: 813px) {
+      #button-font-size{
+          font-size:5px;
+      }
+      .input-size{
+          font-size:5px;
+      }
 }
 </style>

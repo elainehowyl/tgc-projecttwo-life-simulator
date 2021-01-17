@@ -77,6 +77,12 @@ Allows user to understand the logic of the game before playing.
 2. User Stats:
 A set of user's stats will be displayed in the side bar so that user can see the status of their stats after they performed certain tasks.
 
+### Algorithms Used
+
+1. State Variables
+2. 2D Array Traversal
+3. Queue
+
 ### Future Implementations
 1. Create a loading screen to facilitate the process of logging in and signing out.
 2. Create a scoreboard that will allow players to see their rankings, which can also encourage frequent participations in the game.
@@ -93,25 +99,29 @@ A set of user's stats will be displayed in the side bar so that user can see the
 
 The features are not perfect but below are some instructions and outputs provided to test the currently available features:
 
-### Registering An Account
+### Registering An Account...
 
-1. Case One: Username Taken
+#### Case One: Username Taken
 * If the username is taken, there will be an error message as such:
+
 ![UsernameTaken](./life_sim_game/public/images/register-username-taken.png)
 
-2. Case Two: Invalid Inputs
+#### Case Two: Invalid Inputs
 * If the input fields do not meet the requirement, there will be error messages as such:
+
 * Note: In this case, one player is allowed to have different accounts under the same email. Thus, reistering an existing email would not be flagged as errors.
 ![InvalidInputs](./life_sim_game/public/images/register-invalid.png)
 
-### Logging In
+### Logging In...
 
-1. Case One: Account not found
+#### Case One: Account not found
 * If a username has not been registered before, to put it simply, the account has not been created before, an alert will show up and prompt the user to register for an account:
+
 ![AccountNotFound](./life_sim_game/public/images/login-account-notfound.png)
 
-2. Case Two: Incorrect password
+#### Case Two: Incorrect password
 * If a username has been registered but the password doesn't match, an error message will show:
+
 ![IncorrectPassword](./life_sim_game/public/images/login-incorrect-password.png)
 
 ## Deployment
@@ -128,6 +138,7 @@ I would also like to provide acknowledgements to the following platform/webpage 
 
 * [BootstrapVue](www.bootstrap-vue.org) for Forms, Buttons and Modals.
 * [VuexPersistedState](https://www.npmjs.com/package/vuex-persistedstate) for implementation of Global States.
+* [MikeBoStock](https://bost.ocks.org/mike/shuffle/) for Fisher-Yates Shuffle
 * [GameArt2d](https://www.gameart2d.com/freebies.html) for Characters' Sprites.
 * [LogoMakr](https://logomakr.com/) for Game Logo.
 * [TransparentTextures](https://www.transparenttextures.com/) for Background Image of Side Bar.

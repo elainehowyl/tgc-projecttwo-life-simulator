@@ -6,12 +6,12 @@
               <!-- <p>Created my free logo at LogoMakr.com</p> -->
             </div>
             <div v-if="this.$store.state.loggedIn===false">
-              <Login/>
-              <SideButtons/>
+              <Login id="login-size"/>
+              <SideButtons id="sidebuttons-size"/>
             </div>
             <div v-else>
               <UserStats id="user-stats"/>
-              <SideButtonsLoggedIn/>
+              <SideButtonsLoggedIn id="sidebuttonsloggedin-size"/>
             </div>
         </div>
     </div>
@@ -54,4 +54,11 @@ p{
     text-align:center;
     font-size:16px;
 }
+/* @media only screen
+and (min-width:667px)
+and (max-width:812px){
+  #login-size{
+      height:15%;
+  }
+} */
 </style>

@@ -118,22 +118,17 @@ export default {
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Piedra&display=swap');
 .modal-button-container{
     width:100%;
     background-color:black;
     text-align:center;
     border:solid;
 }
-#register-form{
-   font-family: 'Piedra', cursive;
-}
 @media only screen 
   and (min-width: 414px) 
-  and (max-width: 736px) {
-      .button-size{
-          font-size:16px;
+  and (max-width: 813px) {
+      .modal-button-container{
+          font-size:5px;
       }
-
 }
 </style>

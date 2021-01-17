@@ -8,7 +8,7 @@ It also aims to challenge a player's multi-tasking skill and create an understan
 
 ## Demo
 
-Click [here](link) to play the game now!
+Click [here](https://elainehowyl.github.io/tgc-projecttwo-life-simulator/) to play the game now!
 
 The source code for the project's api can also be found [here](https://github.com/elainehowyl/tgc-projecttwo-life-simulator-api)
 

@@ -48,7 +48,7 @@ Home Page (Before the player login):
 ![HomePage](./life_sim_game/public/images/Wireframe_Login_Page.png)
 
 Game Page (After the player login):
-![GamePage](./life_sim_game/public/images/Wireframe_Login_Page.png)
+![GamePage](./life_sim_game/public/images/Wireframe_Game_Page.png)
 
 #### Functional Requirements
 

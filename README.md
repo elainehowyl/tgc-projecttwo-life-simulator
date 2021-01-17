@@ -33,15 +33,34 @@ The game can also be targeted at audiences who are a fan of casual and clicker g
 * I want to have a casual game that I can have fun with during my leisure time.
 * I want to be able to save my game progress so that I can still revisit the game after some times.
 
-## Scope
-### Functional Requirements
+### Structure & Skeleton
 
-1. Login / Register Button: Allow existing users to login to their accounts and also allowing new user to create an account.
-2. Save / Load Button: Allows user to save and load their game progress
+The structure of the game page is designed in a way such that it is simple to navigate around, and that every function (such as login) can be executed in a single page.
+The page is separated into two sections: 
+1. A side bar - displays logo, login form, user stats and buttons.
+2. A game display screen - displays character's sprite, game buttons and functions.
+
+There is also a wide usage of Modals from Bootstrap, which acts like a pop-up box to display 'Register An Account' form and 'How to Play' page such that no re-routing would be required.
+
+Below shows the structure of the two different pages:
+
+Home Page (Before the player login):
+![HomePage](images/Wireframe_Login_Page.png)
+
+Game Page (After the player login):
+![GamePage](images/Wireframe_Login_Page.png)
+
+#### Functional Requirements
+
+1. Login / Register Button: 
+Allow existing users to login to their accounts and also allowing new user to create an account.
+2. Save Button: Allows user to save and load their game progress.
 3. Individual Task Button(in the game): Will perform an increment or decrement on users' stats based on the tasks that they've clicked onto.
 
-### Content Requirements
+#### Content Requirements
 
 1. Will feature a 'How to play' page.
 2. Will feature a ranking board where users can see the high scores.
 3. In the game box, will feature user's stats like health, happiness and money.
+
+## Features

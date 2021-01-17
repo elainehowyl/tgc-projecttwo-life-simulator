@@ -8,7 +8,7 @@
         <b-progress :value="this.$store.state.happiness" :max="100" show-progress animated variant="warning"></b-progress>
         <h6>Energy:</h6>
         <b-progress :value="this.$store.state.energy" :max="100" show-progress animated variant="success"></b-progress>
-        <h4>Money: ${{this.$store.state.money}}</h4>
+        <h6>Money: ${{this.$store.state.money}}</h6>
     </div>
 </template>
 

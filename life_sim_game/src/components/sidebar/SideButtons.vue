@@ -5,7 +5,6 @@
             <b-button v-b-modal.how-to-play class="modal-button-container" size="sm">How To Play</b-button>
         </div>
         <b-modal id="register-form">
-        <!-- <b-modal v-if="registered===false" id="register-form"> -->
             <template #modal-header>
                 <h3>Sign Up for An Account</h3>
             </template>
@@ -35,8 +34,8 @@
                 <p v-if="genderNotSelected===true" v-bind:style="{color:'red', fontSize:'16px'}">Please select a gender.</p>
              </div>
              <template #modal-footer="{cancel}">
-                <b-button @click="newRegister" size="sm" variant="success">Register</b-button>
-                <b-button @click="cancel()" size="sm" variant="primary">Cancel</b-button>
+                <b-button @click="newRegister" size="sm" variant="success" class="button-size">Register</b-button>
+                <b-button @click="cancel()" size="sm" variant="primary" class="button-size">Cancel</b-button>
              </template>
          </b-modal>
          <b-modal id="how-to-play">Hello From My Modal!</b-modal>
@@ -128,5 +127,13 @@ export default {
 }
 #register-form{
    font-family: 'Piedra', cursive;
+}
+@media only screen 
+  and (min-width: 414px) 
+  and (max-width: 736px) {
+      .button-size{
+          font-size:16px;
+      }
+
 }
 </style>

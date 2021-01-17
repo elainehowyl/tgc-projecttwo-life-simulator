@@ -22,9 +22,9 @@
                 <b-form-group description="Enter your password to complete deletion of account">
                   <label>Password</label>
                   <b-form-input type="text" v-model="deletePassword"/>
+                  <p v-if="wrongPassword===true" v-bind:style="{color:'red', fontSize:'16px'}">Password is wrong.</p>
                 </b-form-group>
                 <b-button size="sm" variant="danger" v-on:click="confirmDelete">Confirm Delete</b-button>
-                <p v-if="wrongPassword===true" v-bind:style="{color:'red', fontSize:'16px'}">Password is wrong.</p>
             </div>
         </b-modal>
         </div>

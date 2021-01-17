@@ -45,10 +45,10 @@ There is also a wide usage of Modals from Bootstrap, which acts like a pop-up bo
 Below shows the structure of the two different pages:
 
 Home Page (Before the player login):
-![HomePage](images/Wireframe_Login_Page.png)
+![HomePage](./life_sim_game/public/images/Wireframe_Login_Page.png)
 
 Game Page (After the player login):
-![GamePage](images/Wireframe_Login_Page.png)
+![GamePage](./life_sim_game/public/images/Wireframe_Login_Page.png)
 
 #### Functional Requirements
 

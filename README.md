@@ -52,8 +52,8 @@ Below shows the structure of the two different pages:
 
 ### Color and Fonts
 
-I picked purple to be the background color of the side bar because it gives off a joyous and fun tone, but at the same time, not too bright of a color that will hurt one's eyes.
-For the font, 'Chewy, cursive' was chosen as it emits a child-like, comic-like vibe and also, at the same time, not too fanciful that it is hard to read, making it an ideal choice for a casual game environemnt. 
+* I picked purple to be the background color of the side bar because it gives off a joyous and fun tone, but at the same time, not too bright of a color that will hurt one's eyes.
+* For the font, 'Chewy, cursive' was chosen as it emits a child-like, comic-like vibe and also, at the same time, not too fanciful that it is hard to read, making it an ideal choice for a casual game environment. 
 
 ## Features
 
@@ -77,4 +77,23 @@ Allows user to understand the logic of the game before playing.
 2. User Stats:
 A set of user's stats will be displayed in the side bar so that user can see the status of their stats after they performed certain tasks.
 
-## Features
+### Future Implementations
+1. Create a loading screen to facilitate the process of logging in and signing out.
+2. Create a scoreboard that will allow players to see their rankings, which can also encourage frequent participations in the game.
+3. Allow user to share their progress on their social medias.
+
+## Technologies Used
+* For Frontend and Styling: VueJS, CSS, Bootstrap and Bootstrap Vue
+* For Functionality: VueJS and JavaScript
+* For Coding-Work: GitPod
+* For Database and API Routings: MongoDB Atlas and ExpressJS
+* FOr Repositories and Deployment: GitHub and Heroku 
+
+## Testing
+
+## Deployment
+
+The project is divided into two parts: API and Frontend.
+* Firstly, the original API that was done in Express JS is hosted onto [Heroku](www.heroku.com).
+* After that, I would retrieve the new URLs that contain my API routes and implement them into my VueJS code.
+* Lastly, [Github](www.github.com) is used to deploy my web page.

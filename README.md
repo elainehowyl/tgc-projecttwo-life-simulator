@@ -97,7 +97,7 @@ A set of user's stats will be displayed in the side bar so that user can see the
 
 ## Testing
 
-The features are not perfect but below are some instructions and outputs provided to test the currently available features:
+Below are some instructions and outputs provided to test the currently available features:
 
 ### Registering An Account...
 
@@ -108,8 +108,8 @@ The features are not perfect but below are some instructions and outputs provide
 
 #### Case Two: Invalid Inputs
 * If the input fields do not meet the requirement, there will be error messages as such:
+* Note: In this case, one player is allowed to have different accounts under the same email. Thus, registering an existing email would not be flagged as errors.
 
-* Note: In this case, one player is allowed to have different accounts under the same email. Thus, reistering an existing email would not be flagged as errors.
 ![InvalidInputs](./life_sim_game/public/images/register-invalid.png)
 
 ### Logging In...
@@ -123,6 +123,45 @@ The features are not perfect but below are some instructions and outputs provide
 * If a username has been registered but the password doesn't match, an error message will show:
 
 ![IncorrectPassword](./life_sim_game/public/images/login-incorrect-password.png)
+
+### Saving...
+* Clicking on the save button would update user's game progress into database.
+* When user log in again, the game will load user's previously saved progress.
+
+### Gameplay...
+
+#### Clicking on Character's Sprite
+
+* $1 will be added into user's money stat for every click on the sprite.
+* After 150 clicks, a random event will be triggered, which will increase/decrease the user's money accordingly.
+
+#### Tasks Management
+
+![Tasks](./life_sim_game/public/images/gameplay-tasks.png)
+
+* Clicking on different tasks would increase/decrease the users' stats.
+* When one or more stats aren't enough to accomplish a task, an alert will pop out, informing the user that they can't do that task.
+
+#### Store Management
+
+![Store](./life_sim_game/public/images/gameplay-store.png)
+
+* Clicking on either of the houses will allow the user to either make a purchase of the house or display it.
+* User will not be able to make the same purchase more than one time.
+* If user doesn't have enough money to buy it, an alert will pop up.
+
+### Deleting Account...
+
+#### Case One: Wrong password
+* An error message will pop out if user enters the wrong password, therefore, the deletion will not be executed.
+![IncorrectPasswordDelete](./life_sim_game/public/images/delete-wrong-password.png)
+
+#### Case Two: Delete Successful
+* Upon success of deletion of account, an alert will pop out and user will be redirected back to home page.
+![DeleteSuccess](./life_sim_game/public/images/delete-successful.png)
+
+### Signing out...
+* A simple click on Signout will immediately redirect user back to home page.
 
 ## Deployment
 

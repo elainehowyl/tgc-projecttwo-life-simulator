@@ -4,7 +4,7 @@
             <b-button v-b-modal.register-form class="modal-button-container" size="sm">Register</b-button>
             <b-button v-b-modal.how-to-play class="modal-button-container" size="sm">How To Play</b-button>
         </div>
-        <b-modal id="register-form">
+        <b-modal v-if="registerSuccess===false" id="register-form">
             <template #modal-header>
                 <h3>Sign Up for An Account</h3>
             </template>
@@ -38,7 +38,12 @@
                 <b-button @click="cancel()" size="sm" variant="primary" class="button-size">Cancel</b-button>
              </template>
          </b-modal>
-         <b-modal id="how-to-play">Hello From My Modal!</b-modal>
+         <b-modal id="how-to-play">
+             <template #modal-header>
+                <h3>How the game works</h3>
+            </template>
+            <div></div>
+            </b-modal>
     </div>
 </template>
 
@@ -60,12 +65,15 @@ export default {
             passwordMismatch:false,
             emailInvalid:false,
             displayNameNoInput:false,
-            // genderArray:[],
             genderNotSelected:false,
+            registerSuccess:false
         }
     },
     methods:{
         newRegister:async function(){
+            if(this.registerSuccess===true){
+                this.registerSuccess===false
+            }
             let response = await axios.get('https://ehyl-life-sim-game-api.herokuapp.com/users')
             this.usersForRegistration=response.data
             let usernameFound = false;
@@ -109,7 +117,7 @@ export default {
                     ownedhouses:[]
                  })
                  alert("Account registered successfully!")
-                // this.registered = true;
+                this.registerSuccess = true;
                 }
             }
         }

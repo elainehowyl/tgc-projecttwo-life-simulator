@@ -44,23 +44,37 @@ There is also a wide usage of Modals from Bootstrap, which acts like a pop-up bo
 
 Below shows the structure of the two different pages:
 
-Home Page (Before the player login):
+* Home Page (Before the player login):
 ![HomePage](./life_sim_game/public/images/Wireframe_Login_Page.png)
 
-Game Page (After the player login):
+* Game Page (After the player login):
 ![GamePage](./life_sim_game/public/images/Wireframe_Game_Page.png)
 
-#### Functional Requirements
+### Color and Fonts
 
-1. Login / Register Button: 
-Allow existing users to login to their accounts and also allowing new user to create an account.
-2. Save Button: Allows user to save and load their game progress.
-3. Individual Task Button(in the game): Will perform an increment or decrement on users' stats based on the tasks that they've clicked onto.
+I picked purple to be the background color of the side bar because it gives off a joyous and fun tone, but at the same time, not too bright of a color that will hurt one's eyes.
+For the font, 'Chewy, cursive' was chosen as it emits a child-like, comic-like vibe and also, at the same time, not too fanciful that it is hard to read, making it an ideal choice for a casual game environemnt. 
 
-#### Content Requirements
+## Features
 
-1. Will feature a 'How to play' page.
-2. Will feature a ranking board where users can see the high scores.
-3. In the game box, will feature user's stats like health, happiness and money.
+### Functional Features
+
+1. Login Form / Register Form: 
+Allow existing users to login to their accounts and also allowing new user to register for an account.
+2. Save Button: 
+Allows user to save and load their game progress.
+3. Delete Account Button: 
+Allows user to delete their account after entering the correct password.
+4. Sign Out Button: 
+Allow user to sign out of the game.
+5. Store/Task Button(in the game): 
+Will perform an increment or decrement on users' stats based on the tasks that they've clicked onto.
+
+### Content Features
+
+1. 'How to play' Modal: 
+Allows user to understand the logic of the game before playing.
+2. User Stats:
+A set of user's stats will be displayed in the side bar so that user can see the status of their stats after they performed certain tasks.
 
 ## Features

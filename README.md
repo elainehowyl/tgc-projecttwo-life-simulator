@@ -97,3 +97,19 @@ The project is divided into two parts: API and Frontend.
 * Firstly, the original API that was done in Express JS is hosted onto [Heroku](www.heroku.com).
 * After that, I would retrieve the new URLs that contain my API routes and implement them into my VueJS code.
 * Lastly, [Github](www.github.com) is used to deploy my web page.
+
+## Acknowledgements / Credits
+
+Firstly, I would like to extend my appreciation to my course instructor, Mr Paul Chor and teaching assistant, Mr Shun for their knowledge and guidance as the project would not have been made possible without them.
+I would also like to provide acknowledgements to the following platform/webpage which completes my project:
+
+* [BootstrapVue](www.bootstrap-vue.org) for Forms, Buttons and Modals.
+* [VuexPersistedState](https://www.npmjs.com/package/vuex-persistedstate) for implementation of Global States.
+* [GameArt2d](https://www.gameart2d.com/freebies.html) for Characters' Sprites.
+* [LogoMakr](https://logomakr.com/) for Game Logo.
+* [TransparentTextures](https://www.transparenttextures.com/) for Background Image of Side Bar.
+* [PngTree](https://pngtree.com/) for:
+   * Store Icon
+   * Handphone Icon
+   * Tasks Images: Eat, Socialise, Work and Exercise
+   * Background Images of the game screen

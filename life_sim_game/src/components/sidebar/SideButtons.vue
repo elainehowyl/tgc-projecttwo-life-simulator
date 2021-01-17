@@ -61,6 +61,7 @@ export default {
             passwordMismatch:false,
             emailInvalid:false,
             displayNameNoInput:false,
+            // genderArray:[],
             genderNotSelected:false,
         }
     },
@@ -84,7 +85,7 @@ export default {
                 this.passwordMismatch = this.registerPasswordRe !== this.registerPassword ? true:false
                 this.emailInvalid = !this.registerEmail.includes('@') && !this.registerEmail.includes('.') ? true:false
                 this.displayNameNoInput = this.registerDisplayName.length === 0 ? true:false
-                this.genderNotSelected = !this.selectGender.checked ? true:false
+                this.genderNotSelected = this.selectGender.length === 0 ? true:false
                 if(!this.usernameNoInput && !this.passwordTooShort && !this.passwordMismatch && !this.emailInvalid && !this.displayNameNoInput && !this.genderNotSelected){
                     formValid = true
                 }

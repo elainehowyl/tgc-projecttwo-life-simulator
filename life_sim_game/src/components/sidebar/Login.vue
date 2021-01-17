@@ -46,7 +46,6 @@ export default {
                 this.passwordErrorMsg = ""
                 alert("Account not found! Would you like to register an account now?")
             }
-            // this.$emit('loginSuccessful')
         }
     }
 }

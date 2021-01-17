@@ -24,6 +24,7 @@
                   <b-form-input type="text" v-model="deletePassword"/>
                 </b-form-group>
                 <b-button size="sm" variant="danger" v-on:click="confirmDelete">Confirm Delete</b-button>
+                <p v-if="wrongPassword===true" v-bind:style="{color:'red', fontSize:'16px'}">Password is wrong.</p>
             </div>
         </b-modal>
         </div>
@@ -38,7 +39,8 @@ export default {
             deletePassword:"",
             clickedDelete:false,
             user:{},
-            savedGame:{}
+            savedGame:{},
+            wrongPassword:false
         }
     },
     methods:{
@@ -77,7 +79,8 @@ export default {
                 alert("Account has been deleted successfully!")
                  this.$store.state.loggedIn = false;
             } else {
-                alert("Incorrect password!")
+                this.wrongPassword = true
+                // alert("Incorrect password!")
             }
         }
     }

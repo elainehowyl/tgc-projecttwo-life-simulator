@@ -40,9 +40,37 @@
          </b-modal>
          <b-modal id="how-to-play">
              <template #modal-header>
-                <h3>How the game works</h3>
+                <h2>HOW DOES THE GAME WORK?</h2>
             </template>
-            <div></div>
+            <div>
+                <p>The main objective of this clicker game is to try to manage your health bar, happiness bar, energy bar and money.</p>
+                <img src="images/progress-bars.png" width=100%/>
+                <br><br><p>There are various ways to earn money: </p>
+                <ol>
+                <li>Clicking on your character will earn you $1 per click</li>
+                <img src="images/female.png" width=50%/>
+                <img src="images/male.png" width=40%/>
+                <p>*However, be careful that for every 150 clicks, a random event will be triggered which can either increase or decrease your money.</p>
+                <br><li>Each task that is clicked will also affect your stats differently:</li>
+                <img src="images/tasks.png" width=100%/>
+                <ul>
+                    <li>Eat: <br>health+10%, happiness+10%, energy+15%, money-$50</li>
+                    <li>Go to Work: <br> health-30%, happiness-40%, energy-40%, money+$100</li>
+                    <li>Socialise: <br>health+10%, happiness+20%, energy-30%, money-$200</li>
+                    <li>Exercise: <br>health+25%, happiness+15%, energy-40%, money-$0</li>
+                </ul>
+                </ol>
+                <br><p>The money that is earned can be used to purchase different houses in the store:</p>
+                <img src="images/store.png" width=100%/>
+                <ul>
+                    <li>House 1: $10,000</li>
+                    <li>House 2: $20,000</li>
+                    <li>House 3: $30,000</li>
+                    <li>House 4: $40,000</li>
+                </ul>
+                <br><p>You've reached the end of the tutorial.<p> 
+                <p>I shall thereby wish you a good luck and hope that you would have fun riding through this tiny storm called life!</p>
+            </div>
             </b-modal>
     </div>
 </template>

@@ -26,12 +26,11 @@
                 </table>
             </div>
             <div id="show-store" v-if="showStoreState === true">
-                <img src="images/store_menu.png" width=100% height="10%"/>
+                <img src="images/store_menu.png" width=100% height="20%"/>
                 <table class="table table-sm table-borderless" id="store-container">
                     <tr v-for='(row, rindex) in storeContainer' v-bind:key='rindex'>
                         <td v-for='(col, cindex) in row' v-bind:key='cindex'>
                             <img :src='housesList[cindex*2+rindex].image_source' width=100% v-on:click="storeButtons(cindex,rindex)"/>
-                            <!-- <p>{{housesList[cindex*2+rindex].price}}</p> -->
                         </td>    
                     </tr>
                 </table>
@@ -178,7 +177,7 @@ export default {
             this.$store.state.money += 1
             this.$store.state.clicks += 1
             console.log("Number of clicks: ", this.$store.state.clicks)
-            if(this.$store.state.clicks%100 === 0){
+            if(this.$store.state.clicks%150 === 0){
                 // let queueEmpty = false;
                 if(this.events.length!==0){
                     this.currentEvent = this.events.dequeue()
@@ -312,10 +311,13 @@ p{
 }
 #store-container{
     /* border:solid; */
-    width:67%;
+    width:65%;
     position:absolute;
     top:28%;
-    right:17%;
+    right:18%;
+}
+p{
+    text-align:center;
 }
 .low-stat-message{
     width:25%;

@@ -147,6 +147,7 @@ export default {
                     ownedhouses:[]
                  })
                  alert("Account registered successfully!")
+                 this.$bvModal.hide("register-form");
                 }
             }
         }

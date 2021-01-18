@@ -104,6 +104,9 @@ export default {
             let response = await axios.get('https://ehyl-life-sim-game-api.herokuapp.com/users')
             this.usersForRegistration=response.data
             let usernameFound = false;
+            if(this.registeredUsername === true){
+                this.registeredUsername = false;
+            }
             for(let user of this.usersForRegistration){
                 if(this.registerUsername == user.username){
                     this.registeredUsername = true

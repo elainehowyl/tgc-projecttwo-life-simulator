@@ -71,6 +71,9 @@
                 <br><p>You've reached the end of the tutorial.<p> 
                 <p>I shall thereby wish you a good luck and hope that you would have fun riding through this tiny storm called life!</p>
             </div>
+            <template #modal-footer="{ok}">
+                <b-button @click="ok()" size="sm" variant="warning" class="button-size">Ok, let's go!</b-button>
+             </template>
             </b-modal>
     </div>
 </template>

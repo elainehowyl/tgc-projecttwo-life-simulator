@@ -147,6 +147,12 @@ export default {
                     ownedhouses:[]
                  })
                  alert("Account registered successfully!")
+                 this.registerUsername='',
+                 this.registerPassword='',
+                 this.registerPasswordRe='',
+                 this.registerEmail='',
+                 this.registerDisplayName='',
+                 this.selectGender='',
                  this.$bvModal.hide("register-form");
                 }
             }

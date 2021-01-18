@@ -128,13 +128,10 @@ export default {
         increaseMoney:function(){
             this.$store.state.money += 1
             this.$store.state.clicks += 1
-            console.log("Number of clicks: ", this.$store.state.clicks)
             if(this.$store.state.clicks%150 === 0){
                 if(this.events.length!==0){
                     this.currentEvent = this.events.dequeue()
                     alert(this.currentEvent.description)
-                    console.log("Dequeued event: ", this.currentEvent.event_name)
-                    console.log("Current in queue: ", this.events)
                     if(this.$store.state.money + this.currentEvent.money < 0){
                         this.$store.state.money = 0;
                     }
@@ -150,7 +147,7 @@ export default {
                 if(cindex*2+rindex === this.tasksList.indexOf(task)){
                     if(this.$store.state.health + task.health < 0 || this.$store.state.happiness + task.happiness < 0 || this.$store.state.money + task.money < 0 || this.$store.state.energy + task.energy < 0){
                         if(this.$store.state.health + task.health < 0){
-                            alert("You're falling sick...")
+                            alert("You're falling sick...Take care of your heath first.")
                         }
                         if(this.$store.state.happiness + task.happiness < 0){
                             alert("You're not feeling happy right now to do anything...")

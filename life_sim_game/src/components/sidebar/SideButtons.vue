@@ -4,13 +4,13 @@
             <b-button v-b-modal.register-form class="modal-button-container" size="sm">Register</b-button>
             <b-button v-b-modal.how-to-play class="modal-button-container" size="sm">How To Play</b-button>
         </div>
-        <b-modal v-if="registerSuccess===false" id="register-form">
+        <b-modal id="register-form">
             <template #modal-header>
                 <h3>Sign Up for An Account</h3>
             </template>
             <div>
               <label> Username: </label>
-              <b-form-input type="text" size="sm" v-model="registerUsername"/>
+              <b-form-input type="text" size="sm" autocomplete="off" v-model="registerUsername"/>
               <p v-if="registeredUsername===true" v-bind:style="{color:'red', fontSize:'16px'}">Username is taken.</p>
               <p v-if="usernameNoInput===true" v-bind:style="{color:'red', fontSize:'16px'}">Please enter a username.</p>
               <p v-if="registeredUsername===false && usernameNoInput===false"></p>
@@ -21,10 +21,10 @@
               <b-form-input type="password" size="sm" v-model="registerPasswordRe"/>
               <p v-if="passwordMismatch===true" v-bind:style="{color:'red', fontSize:'16px'}">Password does not match.</p>
               <label> Email: </label>
-              <b-form-input type="email" size="sm" v-model="registerEmail"/>
+              <b-form-input type="email" size="sm" autocomplete="off" v-model="registerEmail"/>
               <p v-if="emailInvalid===true" v-bind:style="{color:'red', fontSize:'16px'}">Please enter a valid email.</p>
               <label> Display Name: </label>
-              <b-form-input type="text" size="sm" v-model="registerDisplayName"/>
+              <b-form-input type="text" size="sm" autocomplete="off" v-model="registerDisplayName"/>
               <p v-if="displayNameNoInput===true" v-bind:style="{color:'red', fontSize:'16px'}">Please enter a display name.</p>
              </div>
              <div>
@@ -94,7 +94,6 @@ export default {
             emailInvalid:false,
             displayNameNoInput:false,
             genderNotSelected:false,
-            registerSuccess:false
         }
     },
     methods:{
@@ -139,12 +138,12 @@ export default {
                         health:50,
                         happiness:50,
                         energy:50,
-                        money:100
+                        money:100,
+                        clicks:0
                     },
                     ownedhouses:[]
                  })
                  alert("Account registered successfully!")
-                this.registerSuccess = true;
                 }
             }
         }

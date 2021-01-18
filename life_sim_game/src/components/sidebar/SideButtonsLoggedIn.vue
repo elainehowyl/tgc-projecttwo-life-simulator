@@ -48,7 +48,7 @@ export default {
                     happiness:this.$store.state.happiness,
                     energy:this.$store.state.energy,
                     money:this.$store.state.money,
-                    stats:0
+                    clicks:0
                 },
                 ownedhouses:this.$store.state.userhouses
             })
